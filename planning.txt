@@ -1,0 +1,5 @@
+Id_cheval
+Nom_activite
+date_activite
+duree
+Id_cavalier
