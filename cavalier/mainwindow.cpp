@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->ID->setValidator(new QIntValidator(0,9999999,this));
     ui->Id_2->setValidator(new QIntValidator(0,9999999,this));
+    ui->id_planning->setValidator(new QIntValidator(0,9999999,this));
 
 
 }
@@ -36,18 +37,22 @@ void MainWindow::on_ajouter_clicked()
     QString maladie=ui->maladie->text () ;
 
  Cavalier c(ID,nom,prenom,dateN,dateI,type ,Email,nomE,num, maladie);
-
+bool test=c.ajouter();
 
 }
 
 
-void MainWindow::on_afficher_clicked()
+//void MainWindow::on_afficher_clicked()
+//{
+
+
+//}
+
+void MainWindow::on_affiche_cavaliers_currentChanged(int index)
 {
     Cavalier c ;
     ui->tab_cavalier->setModel(c.afficher()) ;
-
 }
-
 
 
 void MainWindow::on_modifier_clicked()
@@ -96,5 +101,88 @@ void MainWindow::on_supprimer_clicked()
         QMessageBox::critical(nullptr, QObject::tr("supprimer un cavalier "),
                               QObject::tr("Erreur !.\n"
                                           "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+
+
+
+
+void MainWindow::on_ajouter_planning_clicked()
+{   int id_cavalier=ui->id_cavalier->text().toInt ();
+    int id_planning=ui->id_planning->text().toInt ();
+    QString horaire=ui->horaire->text () ;
+    int appreciation=ui->appreciation->text().toInt ();
+    int id_coach=ui->id_coach->text().toInt ();
+    int id_cheval=ui->id_cheval->text().toInt ();
+    int id_evenement=ui->id_evenement->text().toInt ();
+
+ planning_cavalier p(id_cavalier,id_planning,horaire,appreciation,id_coach,id_cheval ,id_evenement);
+
+
+}
+
+
+
+void MainWindow::on_afficher_planning_2_currentChanged(int index)
+{
+   planning_cavalier p  ;
+    ui->afficher_planning->setModel(p.afficher()) ;
+}
+
+void MainWindow::on_supprimer_cavalier_clicked()
+{
+
+    planning_cavalier p1 ;
+    p1.setid_planning(ui->id_planning_supp->text().toInt());
+    bool test =p1.supprimer(p1.getid_planning());
+    if(test)
+    {
+        QMessageBox::information(nullptr, QObject::tr("supprimer un planning"),
+                                 QObject::tr("planning  supprimé.\n"
+                                             "Click Cancel to exit."), QMessageBox::Cancel);
+        ui->afficher_planning->setModel(p1.afficher()) ;
+
+    }
+    else
+        QMessageBox::critical(nullptr, QObject::tr("supprimer un planning "),
+                              QObject::tr("Erreur !.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+
+
+
+void MainWindow::on_modifier_planning_clicked()
+{int id_cavalier=ui->id_cavalier->text().toInt ();
+    int id_planning=ui->id_planning->text().toInt ();
+    QString horaire=ui->horaire->text () ;
+    int appreciation=ui->appreciation->text().toInt ();
+    int id_coach=ui->id_coach->text().toInt ();
+    int id_cheval=ui->id_cheval->text().toInt ();
+    int id_evenement=ui->id_evenement->text().toInt ();
+
+ planning_cavalier p(id_cavalier,id_planning,horaire,appreciation,id_coach,id_cheval ,id_evenement);
+
+
+
+bool test1=p.ajouter();
+if(test1)
+{
+    QMessageBox::information(nullptr, QObject::tr("Modifier un planning"),
+                             QObject::tr("planning  modifié.\n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+else
+    QMessageBox::critical(nullptr, QObject::tr("Modifier un planning "),
+                          QObject::tr("Erreur !.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+
+
+}
+
+
+void MainWindow::on_envoyermail_clicked()
+{
 
 }

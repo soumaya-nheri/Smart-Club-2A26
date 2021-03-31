@@ -105,7 +105,7 @@ bool Cavalier::supprimer(int Id_2)
 
     QString res= QString::number(Id_2);
 
-    query.prepare("Delete from cavalier where Id= :ID");
+    query.prepare("Delete from cavalier where Id_2= :ID");
     query.bindValue(":ID", res);
 
     return    query.exec();

@@ -28,12 +28,14 @@ SOURCES += \
     cavalier.cpp \
         main.cpp \
         mainwindow.cpp \
-    connection.cpp
+    connection.cpp \
+    planning_cavalier.cpp
 
 HEADERS += \
     cavalier.h \
         mainwindow.h \
-    connection.h
+    connection.h \
+    planning_cavalier.h
 
 FORMS += \
         mainwindow.ui
