@@ -1,5 +1,6 @@
 #include "mainwindow.h"
-
+#include "planningcheval.h"
+#include "cheval.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

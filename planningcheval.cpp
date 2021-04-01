@@ -1,8 +1,8 @@
-#include "planningCheval.h"
+#include "planningcheval.h"
 #include <QDebug>
-//#include <QSqlDatabase>
+#include <QSqlDatabase>
 #include <QString>
-//#include <QSqlQuery>
+#include <QSqlQuery>
 #include <QMessageBox>
 
     planningCheval::planningCheval()
@@ -72,7 +72,7 @@
 
     bool planningCheval::supprimer(int ID)
     {
-        //QSqlQuery query;
+        QSqlQuery query;
 
         QString res= QString::number(ID);
 

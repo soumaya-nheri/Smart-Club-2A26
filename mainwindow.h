@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "planningcheval.h"
+#include "cheval.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -19,6 +20,8 @@ private slots:
 
 
     void on_ajouter_clicked();
+    bool verifID;
+    bool verifNomactivite;
 
     void on_afficher_clicked();
 
@@ -26,8 +29,28 @@ private slots:
 
     void on_supprimer_clicked();
 
+    void on_pushButton_Quitter_clicked();
+
+    void on_ajouter_cheval_clicked();
+
+    void on_QUITTER_1_clicked();
+
+    void on_QUITTER_2_clicked();
+
+    void on_QUITTER_3_clicked();
+
+    void on_QUITTER_4_clicked();
+
+    void on_afficher_cheval_clicked();
+
+    void on_modifier_cheval_clicked();
+
+    void on_supprimer_cheval_clicked();
+
 private:
     Ui::MainWindow *ui;
+    planningCheval tmp;
+    cheval temp;
 
 };
 #endif // MAINWINDOW_H

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -34,13 +34,13 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>10</y>
+        <y>0</y>
         <width>751</width>
         <height>591</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
@@ -205,43 +205,7 @@
           <string>type d'ativité</string>
          </property>
         </widget>
-        <widget class="QRadioButton" name="Male">
-         <property name="geometry">
-          <rect>
-           <x>130</x>
-           <y>210</y>
-           <width>95</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>MALE</string>
-         </property>
-        </widget>
-        <widget class="QRadioButton" name="Female">
-         <property name="geometry">
-          <rect>
-           <x>130</x>
-           <y>240</y>
-           <width>95</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>FEMALE</string>
-         </property>
-        </widget>
-        <widget class="QSpinBox" name="spinBox_2">
-         <property name="geometry">
-          <rect>
-           <x>400</x>
-           <y>250</y>
-           <width>42</width>
-           <height>22</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QDateEdit" name="dateEdit">
+        <widget class="QDateEdit" name="dateChev">
          <property name="geometry">
           <rect>
            <x>130</x>
@@ -280,7 +244,7 @@
           <rect>
            <x>400</x>
            <y>290</y>
-           <width>81</width>
+           <width>91</width>
            <height>20</height>
           </rect>
          </property>
@@ -327,63 +291,13 @@
           <string>Concours complet</string>
          </property>
         </widget>
-        <widget class="QComboBox" name="natChev">
-         <property name="geometry">
-          <rect>
-           <x>400</x>
-           <y>210</y>
-           <width>111</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>américain</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>français</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>brésilien</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QComboBox" name="raceChev">
-         <property name="geometry">
-          <rect>
-           <x>400</x>
-           <y>170</y>
-           <width>111</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>Arabe</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Frison</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Pur-sang</string>
-          </property>
-         </item>
-        </widget>
         <widget class="QGroupBox" name="groupBox_3">
          <property name="geometry">
           <rect>
            <x>19</x>
-           <y>360</y>
+           <y>370</y>
            <width>541</width>
-           <height>181</height>
+           <height>171</height>
           </rect>
          </property>
          <property name="title">
@@ -465,7 +379,7 @@
           </property>
          </widget>
         </widget>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="ajouter_cheval">
          <property name="geometry">
           <rect>
            <x>610</x>
@@ -478,17 +392,70 @@
           <string>Ajouter</string>
          </property>
         </widget>
-        <widget class="QGroupBox" name="groupBox_4">
+        <widget class="QLineEdit" name="raceChev">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>40</y>
-           <width>631</width>
-           <height>291</height>
+           <x>400</x>
+           <y>170</y>
+           <width>113</width>
+           <height>22</height>
           </rect>
          </property>
-         <property name="title">
-          <string>Informations du cheval</string>
+        </widget>
+        <widget class="QLineEdit" name="nationnaliteChev">
+         <property name="geometry">
+          <rect>
+           <x>400</x>
+           <y>210</y>
+           <width>113</width>
+           <height>22</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="num_box">
+         <property name="geometry">
+          <rect>
+           <x>400</x>
+           <y>250</y>
+           <width>113</width>
+           <height>22</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_38">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>50</y>
+           <width>171</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Informations sur le cheval</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="QUITTER_1">
+         <property name="geometry">
+          <rect>
+           <x>610</x>
+           <y>540</y>
+           <width>93</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>QUITTER</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="genreChev">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>210</y>
+           <width>113</width>
+           <height>22</height>
+          </rect>
          </property>
         </widget>
         <zorder>label_10</zorder>
@@ -496,9 +463,7 @@
         <zorder>label_12</zorder>
         <zorder>label_13</zorder>
         <zorder>label_14</zorder>
-        <zorder>spinBox_2</zorder>
-        <zorder>pushButton_2</zorder>
-        <zorder>groupBox_4</zorder>
+        <zorder>ajouter_cheval</zorder>
         <zorder>groupBox_3</zorder>
         <zorder>idChev</zorder>
         <zorder>nomChev</zorder>
@@ -507,31 +472,23 @@
         <zorder>label_7</zorder>
         <zorder>label_8</zorder>
         <zorder>label_9</zorder>
-        <zorder>Male</zorder>
-        <zorder>Female</zorder>
-        <zorder>dateEdit</zorder>
+        <zorder>dateChev</zorder>
         <zorder>E</zorder>
         <zorder>saut</zorder>
         <zorder>R</zorder>
         <zorder>cc</zorder>
-        <zorder>natChev</zorder>
         <zorder>raceChev</zorder>
+        <zorder>nationnaliteChev</zorder>
+        <zorder>num_box</zorder>
+        <zorder>label_38</zorder>
+        <zorder>QUITTER_1</zorder>
+        <zorder>genreChev</zorder>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
         <string>Afficher </string>
        </attribute>
-       <widget class="QListView" name="listView_2">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>741</width>
-          <height>481</height>
-         </rect>
-        </property>
-       </widget>
        <widget class="QPushButton" name="pushButton_9">
         <property name="geometry">
          <rect>
@@ -545,7 +502,7 @@
          <string>Recherche</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_10">
+       <widget class="QPushButton" name="afficher_cheval">
         <property name="geometry">
          <rect>
           <x>210</x>
@@ -556,6 +513,84 @@
         </property>
         <property name="text">
          <string>Afficher</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="tabCheval">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>751</width>
+          <height>491</height>
+         </rect>
+        </property>
+        <column>
+         <property name="text">
+          <string>Id_cheval</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>nom</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>genre</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>date_de_naiss</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>vaccins</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>date_limite_vacc</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>poids</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>race</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>nationnalite</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>num_box</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>type_act</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QPushButton" name="QUITTER_2">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>510</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>QUITTER</string>
         </property>
        </widget>
       </widget>
@@ -748,16 +783,6 @@
           <string>FEMALE</string>
          </property>
         </widget>
-        <widget class="QSpinBox" name="spinBox_3">
-         <property name="geometry">
-          <rect>
-           <x>400</x>
-           <y>250</y>
-           <width>42</width>
-           <height>22</height>
-          </rect>
-         </property>
-        </widget>
         <widget class="QDateEdit" name="dateEdit_2">
          <property name="geometry">
           <rect>
@@ -843,56 +868,6 @@
          <property name="text">
           <string>Concours complet</string>
          </property>
-        </widget>
-        <widget class="QComboBox" name="natChev_2">
-         <property name="geometry">
-          <rect>
-           <x>400</x>
-           <y>210</y>
-           <width>111</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>américain</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>français</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>brésilien</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QComboBox" name="raceChev_2">
-         <property name="geometry">
-          <rect>
-           <x>400</x>
-           <y>170</y>
-           <width>111</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>Arabe</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Frison</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Pur-sang</string>
-          </property>
-         </item>
         </widget>
         <widget class="QGroupBox" name="groupBox_6">
          <property name="geometry">
@@ -982,30 +957,17 @@
           </property>
          </widget>
         </widget>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="modifier_cheval">
          <property name="geometry">
           <rect>
            <x>610</x>
-           <y>510</y>
+           <y>490</y>
            <width>93</width>
            <height>28</height>
           </rect>
          </property>
          <property name="text">
           <string>Modifier</string>
-         </property>
-        </widget>
-        <widget class="QGroupBox" name="groupBox_7">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>70</y>
-           <width>631</width>
-           <height>291</height>
-          </rect>
-         </property>
-         <property name="title">
-          <string>Informations du cheval</string>
          </property>
         </widget>
         <widget class="QComboBox" name="comboBox_2">
@@ -1029,6 +991,49 @@
          </property>
          <property name="text">
           <string>Chercher cheval</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_11">
+         <property name="geometry">
+          <rect>
+           <x>400</x>
+           <y>170</y>
+           <width>113</width>
+           <height>22</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_12">
+         <property name="geometry">
+          <rect>
+           <x>400</x>
+           <y>210</y>
+           <width>113</width>
+           <height>22</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_13">
+         <property name="geometry">
+          <rect>
+           <x>400</x>
+           <y>250</y>
+           <width>31</width>
+           <height>22</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="QUITTER_3">
+         <property name="geometry">
+          <rect>
+           <x>610</x>
+           <y>530</y>
+           <width>93</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>QUITTER</string>
          </property>
         </widget>
        </widget>
@@ -1060,7 +1065,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="supprimer_cheval">
         <property name="geometry">
          <rect>
           <x>570</x>
@@ -1071,6 +1076,19 @@
         </property>
         <property name="text">
          <string>Supprimer</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="QUITTER_4">
+        <property name="geometry">
+         <rect>
+          <x>570</x>
+          <y>510</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>QUITTER</string>
         </property>
        </widget>
       </widget>
@@ -1090,7 +1108,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_9">
        <attribute name="title">
@@ -1189,34 +1207,6 @@
           <bool>false</bool>
          </property>
         </widget>
-        <widget class="QDateTimeEdit" name="date_activite">
-         <property name="geometry">
-          <rect>
-           <x>240</x>
-           <y>210</y>
-           <width>194</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="Nom_activite">
-         <property name="geometry">
-          <rect>
-           <x>240</x>
-           <y>160</y>
-           <width>73</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>Reining</string>
-          </property>
-         </item>
-        </widget>
         <widget class="QLineEdit" name="Id_cavalier">
          <property name="geometry">
           <rect>
@@ -1253,22 +1243,68 @@
           </rect>
          </property>
         </widget>
+        <widget class="QLineEdit" name="Nom_activite">
+         <property name="geometry">
+          <rect>
+           <x>240</x>
+           <y>160</y>
+           <width>113</width>
+           <height>22</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="date_activite">
+         <property name="geometry">
+          <rect>
+           <x>240</x>
+           <y>210</y>
+           <width>113</width>
+           <height>22</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QTableView" name="tableView">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>40</y>
+           <width>731</width>
+           <height>431</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_Quitter">
+         <property name="geometry">
+          <rect>
+           <x>630</x>
+           <y>370</y>
+           <width>93</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>QUITTER</string>
+         </property>
+        </widget>
+        <zorder>tableView</zorder>
+        <zorder>label</zorder>
+        <zorder>label_2</zorder>
+        <zorder>label_3</zorder>
+        <zorder>label_4</zorder>
+        <zorder>label_5</zorder>
+        <zorder>Id_cheval</zorder>
+        <zorder>Id_cavalier</zorder>
+        <zorder>ajouter</zorder>
+        <zorder>duree</zorder>
+        <zorder>Nom_activite</zorder>
+        <zorder>date_activite</zorder>
+        <zorder>pushButton_Quitter</zorder>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_12">
        <attribute name="title">
         <string>Afficher</string>
        </attribute>
-       <widget class="QListView" name="listView">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>10</y>
-          <width>741</width>
-          <height>461</height>
-         </rect>
-        </property>
-       </widget>
        <widget class="QPushButton" name="afficher">
         <property name="geometry">
          <rect>
@@ -1294,6 +1330,41 @@
         <property name="text">
          <string>Statistique</string>
         </property>
+       </widget>
+       <widget class="QTableWidget" name="tab_planning">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>751</width>
+          <height>471</height>
+         </rect>
+        </property>
+        <column>
+         <property name="text">
+          <string>ID cheval</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>ID cavalier</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Nom act</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>date act</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>duree</string>
+         </property>
+        </column>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_10">
@@ -1406,21 +1477,6 @@
           <bool>true</bool>
          </property>
         </widget>
-        <widget class="QComboBox" name="comboBox_4">
-         <property name="geometry">
-          <rect>
-           <x>240</x>
-           <y>160</y>
-           <width>73</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>Reining</string>
-          </property>
-         </item>
-        </widget>
         <widget class="QLineEdit" name="lineEdit_5">
          <property name="geometry">
           <rect>
@@ -1475,6 +1531,16 @@
           <rect>
            <x>240</x>
            <y>60</y>
+           <width>113</width>
+           <height>22</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_6">
+         <property name="geometry">
+          <rect>
+           <x>240</x>
+           <y>170</y>
            <width>113</width>
            <height>22</height>
           </rect>
