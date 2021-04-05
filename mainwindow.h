@@ -20,8 +20,6 @@ private slots:
 
 
     void on_ajouter_clicked();
-    bool verifID;
-    bool verifNomactivite;
 
     void on_afficher_clicked();
 
@@ -41,11 +39,15 @@ private slots:
 
     void on_QUITTER_4_clicked();
 
-    void on_afficher_cheval_clicked();
+    //void on_afficher_cheval_clicked();
 
     void on_modifier_cheval_clicked();
 
     void on_supprimer_cheval_clicked();
+
+   // void on_tabWidget_2_currentChanged(int index);
+
+    void on_afficher_chev_currentChanged(int index);
 
 private:
     Ui::MainWindow *ui;

@@ -39,7 +39,7 @@ bool cheval::ajouter()
     QSqlQuery query;
     QString res= QString::number(Id_cheval);
     query.prepare("INSERT INTO cheval (Id_cheval,nom,genre,date_de_naiss,vaccins,date_limite_vacc,poids,race,nationnalite,num_box,type_act)"
-                  "VALUES(:Id_cheval,:nom,:genre,:date_de_naiss,:vaccins,:date_limite_vacc,:poids,:race,:nationnalite,:num_box,:type_act) ")
+                  "VALUES(:Id_cheval,:nom,:genre,:date_de_naiss,:vaccins,:date_limite_vacc,:poids,:race,:nationnalite,:num_box,:type_act) ");
     query.bindValue(":Id_cheval",res);
 
     query.bindValue(":Id_cheval",Id_cheval);
@@ -58,9 +58,10 @@ bool cheval::ajouter()
     return    query.exec();
 }
 QSqlQueryModel * cheval::afficher()
-{QSqlQueryModel * model= new QSqlQueryModel();
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
 
-model->setQuery("select * from chval");
+model->setQuery("select * from cheval");
 model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_cheval"));
 model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
 model->setHeaderData(2, Qt::Horizontal, QObject::tr("genre"));
@@ -75,17 +76,21 @@ model->setHeaderData(10, Qt::Horizontal, QObject::tr("type_act"));
 
     return model;
 }
+
+
 bool cheval::supprimer(int ID)
 {
     QSqlQuery query;
 
     QString res= QString::number(ID);
 
-    query.prepare("Delete from fournisseur where ID= :Id_cheval");
+    query.prepare("Delete from cheval where ID=:Id_cheval");
     query.bindValue(":Id_cheval", res);
 
     return    query.exec();
 }
+
+
 bool cheval::modifier(int Id_cheval,QString nom,QString genre,QString date_de_naiss,QString vaccins,QString date_limite_vacc,int poids,QString race,QString nationnalite,int num_box,QString type_act)
 { QSqlQuery query;
     QString res= QString::number(Id_cheval);
