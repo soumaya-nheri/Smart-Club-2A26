@@ -5,7 +5,6 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include<QObject>
-
 #include "planning_cavalier.h"
 planning_cavalier::planning_cavalier()
 {   id_cavalier=0 ;
@@ -29,35 +28,35 @@ planning_cavalier::planning_cavalier(int id_cavalier , int id_planning , QString
 
 
 }
-int planning_cavalier::getid_cavalier(){return id_cavalier ;}
-int planning_cavalier::getid_planning(){return id_planning ;}
-QString planning_cavalier::gethoraire(){return horaire ; }
-int planning_cavalier::getappreciation(){return appreciation ;}
-int planning_cavalier::getid_coach(){return id_coach ;}
-int planning_cavalier::getid_cheval(){return id_cheval ;}
-int planning_cavalier::getid_evenement(){return id_evenement ;}
+int planning_cavalier::get_id_cavalier(){return id_cavalier ;}
+int planning_cavalier::get_id_planning(){return id_planning ;}
+QString planning_cavalier::get_horaire(){return horaire ; }
+int planning_cavalier::get_appreciation(){return appreciation ;}
+int planning_cavalier::get_id_coach(){return id_coach ;}
+int planning_cavalier::get_id_cheval(){return id_cheval ;}
+int planning_cavalier::get_id_evenement(){return id_evenement ;}
 
 bool planning_cavalier::ajouter()
 {
-QSqlQuery query;
+    QSqlQuery query;
 
-QString res= QString::number(id_planning);
+    QString res= QString::number(id_cavalier);
 
-query.prepare("INSERT INTO planning_cavalier (id_cavalier,id_planning,horaire,appreciation,id_coach,id_cheval,id_evenement) "
-                    "VALUES (:id_cavalier,:id_planning,:horaire,:appreciation,:id_coach,:id_cheval,:id_evenement)");
+    query.prepare("INSERT INTO planning_cavalier (id_cavalier,id_planning,horaire,appreciation,id_coach,id_cheval, id_evenement) "
+                        "VALUES (:id_cavalier,:id_planning,:horaire,:appreciation,:id_coach,:id_cheval,:id_evenement)");
 
-query.bindValue(":id_cavalier",id_cavalier);
-query.bindValue(":id_planning",res);
+    query.bindValue(":id_cavalier",res);
 
-//query.bindValue(":ID",ID);
+    //query.bindValue(":ID",ID);
 
-query.bindValue(":horaire",horaire);
-query.bindValue(":apprecition",appreciation);
-query.bindValue(":id_coach",id_coach);
-query.bindValue(":id_cheval",id_cheval);
-query.bindValue(":id_evenemment",id_evenement);
+    query.bindValue(":id_planning",id_planning);
+    query.bindValue(":horaire",horaire);
+    query.bindValue(":appreciation",appreciation);
+    query.bindValue(":id_coach",id_coach);
+    query.bindValue(":id_cheval",id_cheval);
+    query.bindValue(":id_evenement",id_evenement);
 
-return    query.exec();
+    return    query.exec();
 }
 QSqlQueryModel *planning_cavalier ::afficher()
 {
@@ -74,13 +73,13 @@ QSqlQueryModel *planning_cavalier ::afficher()
 
     return model;
 }
-bool planning_cavalier::supprimer(int id_planning_2)
+bool planning_cavalier::supprimer(int id_planning)
 {
     QSqlQuery query;
 
-    QString res= QString::number(id_planning_2);
+    QString res= QString::number(id_planning);
 
-    query.prepare("Delete from planning_cavalier where id_planning_2= :id_planning");
+    query.prepare("Delete from planning_cavalier where id_planning= :id_planning");
     query.bindValue(":id_planning", res);
 
     return    query.exec();

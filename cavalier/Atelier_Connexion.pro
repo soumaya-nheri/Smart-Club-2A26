@@ -5,7 +5,16 @@
 #-------------------------------------------------
 
 QT       += core gui sql
-CONFIG+= console
+QT       += core gui
+QT += sql
+CONFIG += console
+QT += core gui printsupport
+QT += multimedia
+QT += core gui network
+QT+=serialport
+QT += core gui charts
+
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Atelier_Connexion
@@ -29,13 +38,15 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     connection.cpp \
-    planning_cavalier.cpp
+    planning_cavalier.cpp \
+    smtp.cpp
 
 HEADERS += \
     cavalier.h \
         mainwindow.h \
     connection.h \
-    planning_cavalier.h
+    planning_cavalier.h \
+    smtp.h
 
 FORMS += \
         mainwindow.ui

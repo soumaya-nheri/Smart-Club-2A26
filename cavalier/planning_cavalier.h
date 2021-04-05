@@ -10,13 +10,13 @@ class planning_cavalier
 public:
     planning_cavalier();
    planning_cavalier(int,int,QString,int,int,int, int );
-    int getid_cavalier() ;
-    int getid_planning ();
-    QString gethoraire ();
-    int  getappreciation ();
-    int getid_coach();
-    int getid_cheval() ;
-    int getid_evenement() ;
+    int get_id_cavalier() ;
+    int get_id_planning ();
+    QString get_horaire ();
+    int  get_appreciation ();
+    int get_id_coach();
+    int get_id_cheval() ;
+    int get_id_evenement() ;
 
 
 
