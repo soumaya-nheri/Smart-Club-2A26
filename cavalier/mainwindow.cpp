@@ -38,9 +38,15 @@ void MainWindow::on_ajouter_clicked()
 
  Cavalier c(ID,nom,prenom,dateN,dateI,type ,Email,nomE,num, maladie);
 bool test=c.ajouter();
+if(test)
+{QMessageBox msgBox ;
+    QMessageBox::information(this,"information","cavalier ajouté");
 
 }
-
+else {QMessageBox msgBox ;
+    QMessageBox::information(this,"information","echec lors de l ajout");
+ }
+}
 
 //void MainWindow::on_afficher_clicked()
 //{
@@ -69,7 +75,7 @@ void MainWindow::on_modifier_clicked()
         QString maladie=ui->maladie->text () ;
          Cavalier c(ID,nom,prenom,dateN,dateI,type ,Email,nomE,num, maladie);
 
-    bool test1=c.ajouter();
+    bool test1=c.modifier(ID, nom,prenom,dateN,dateI, type, Email,nomE,num, maladie);
     if(test1)
     {
         QMessageBox::information(nullptr, QObject::tr("Modifier un cavalier"),
@@ -85,16 +91,15 @@ void MainWindow::on_modifier_clicked()
 
 
 void MainWindow::on_supprimer_clicked()
-{
-    Cavalier  c1 ;
-    c1.setID(ui->Id_2->text().toInt());
-    bool test =c1.supprimer(c1.getID());
+{Cavalier c;
+    int id = ui->Id_2->text().toInt();
+    bool test=c.supprimer(id);
     if(test)
     {
         QMessageBox::information(nullptr, QObject::tr("supprimer un cavalier"),
                                  QObject::tr("cavalier  supprimé.\n"
                                              "Click Cancel to exit."), QMessageBox::Cancel);
-        ui->tab_cavalier->setModel(c1.afficher()) ;
+        ui->tab_cavalier->setModel(c.afficher()) ;
 
     }
     else
@@ -133,8 +138,9 @@ void MainWindow::on_supprimer_cavalier_clicked()
 {
 
     planning_cavalier p1 ;
-    p1.setid_planning(ui->id_planning_supp->text().toInt());
-    bool test =p1.supprimer(p1.getid_planning());
+
+        int id = ui->id_planning_supp->text().toInt();
+        bool test=p1.supprimer(id);
     if(test)
     {
         QMessageBox::information(nullptr, QObject::tr("supprimer un planning"),
@@ -165,7 +171,7 @@ void MainWindow::on_modifier_planning_clicked()
 
 
 
-bool test1=p.ajouter();
+bool test1=p.modifier(id_cavalier,id_planning,horaire,appreciation,id_coach,id_cheval ,id_evenement);
 if(test1)
 {
     QMessageBox::information(nullptr, QObject::tr("Modifier un planning"),
@@ -183,6 +189,16 @@ else
 
 
 void MainWindow::on_envoyermail_clicked()
+{
+
+}
+
+void MainWindow::on_imprimer_planning_clicked()
+{
+
+}
+
+void MainWindow::on_satat_clicked()
 {
 
 }

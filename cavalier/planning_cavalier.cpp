@@ -36,14 +36,6 @@ int planning_cavalier::getappreciation(){return appreciation ;}
 int planning_cavalier::getid_coach(){return id_coach ;}
 int planning_cavalier::getid_cheval(){return id_cheval ;}
 int planning_cavalier::getid_evenement(){return id_evenement ;}
-void planning_cavalier::setid_cavalier(int id_cavalier){this->id_cavalier =id_cavalier;}
-void planning_cavalier::setid_planning(int id_planning){this->id_planning =id_planning;}
-void planning_cavalier::sethoraire(QString horaire) {this->horaire=horaire ; }
-void planning_cavalier::setappreciation(int appreciation){this->appreciation =appreciation;}
-void planning_cavalier::setid_coach(int id_coach){this->id_coach =id_coach;}
-void planning_cavalier::setid_cheval(int id_cheval){this->id_cheval =id_cheval;}
-void planning_cavalier::setid_evenement(int id_evenement){this->id_evenement =id_evenement;}
-
 
 bool planning_cavalier::ajouter()
 {

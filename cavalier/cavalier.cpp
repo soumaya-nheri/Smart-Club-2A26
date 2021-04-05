@@ -38,26 +38,16 @@ Cavalier::Cavalier(int ID ,QString nom , QString prenom , QString dateN , QStrin
 
 }
 
-int Cavalier::getID(){return ID ;}
-QString Cavalier::getnom(){return nom ; }
-QString Cavalier::getprenom(){return prenom  ; }
-QString Cavalier::getdateN(){return dateN ; }
-QString Cavalier::getdateI(){return dateI ; }
-QString Cavalier::gettype(){return type ; }
-QString Cavalier::getEmail(){return Email  ; }
-QString Cavalier::getnomE(){return nomE ; }
-int Cavalier::getnum(){return num; }
-QString Cavalier::getmaladie(){return maladie ;}
-void Cavalier::setID(int ID){this->ID =ID;}
-void Cavalier::setnom(QString nom) {this->nom=nom ; }
-void Cavalier:: setprenom(QString prenom){this->prenom=prenom ; }
-void Cavalier::setdateN(QString dateN){this->dateN=dateN ; }
-void Cavalier::setdateI(QString dateI){this->dateI=dateI ; }
-void Cavalier::settype(QString type){this->type=type ; }
-void Cavalier::setEmail(QString Email){this->Email=Email ; }
-void Cavalier::setnomE(QString nomE){this->nomE=nomE ; }
-void Cavalier::setnum(int num){this->num=num ; }
-void Cavalier::setmaladie(QString maladie){this->maladie=maladie ; }
+int Cavalier::get_ID(){return ID ;}
+QString Cavalier::get_nom(){return nom ; }
+QString Cavalier::get_prenom(){return prenom  ; }
+QString Cavalier::get_dateN(){return dateN ; }
+QString Cavalier::get_dateI(){return dateI ; }
+QString Cavalier::get_type(){return type ; }
+QString Cavalier::get_Email(){return Email  ; }
+QString Cavalier::get_nomE(){return nomE ; }
+int Cavalier::get_num(){return num; }
+QString Cavalier::get_maladie(){return maladie ;}
 
 bool Cavalier::ajouter()
 {
@@ -99,13 +89,13 @@ model->setHeaderData(8, Qt::Horizontal, QObject::tr("num"));
 model->setHeaderData(9, Qt::Horizontal, QObject::tr("maladie"));
 return model;
 }
-bool Cavalier::supprimer(int Id_2)
+bool Cavalier::supprimer(int id)
 {
     QSqlQuery query;
 
-    QString res= QString::number(Id_2);
+    QString res= QString::number(id);
 
-    query.prepare("Delete from cavalier where Id_2= :ID");
+    query.prepare("Delete from cavalier where id= :ID");
     query.bindValue(":ID", res);
 
     return    query.exec();

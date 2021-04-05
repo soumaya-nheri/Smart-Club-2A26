@@ -4,6 +4,7 @@
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 #include"mainwindow.h"
+#include "QDate"
 
 
 class Cavalier
@@ -11,27 +12,17 @@ class Cavalier
 public:
     Cavalier();
     Cavalier(int,QString,QString,QString,QString,QString, QString, QString ,int ,QString );
-    int getID() ;
-    QString getnom ();
-    QString getprenom ();
-    QString  getdateN ();
-    QString getdateI();
-    QString gettype() ;
-    QString getEmail() ;
-    QString getnomE();
-   int getnum() ;
-    QString  getmaladie() ;
-    void setID(int);
-    void setnom(QString);
-    void setprenom(QString);
-    void setdateN(QString);
-    void setdateI(QString);
-    void settype(QString);
-    void setEmail(QString);
-    void setnomE(QString);
-    void setnum(int);
-    void setmaladie(QString);
-
+    int get_ID() ;
+    QString get_nom ();
+    QString get_prenom ();
+    QString  get_dateN ();
+    QString get_dateI();
+    QString get_type() ;
+    QString get_Email() ;
+    QString get_nomE();
+   int get_num() ;
+    QString  get_maladie() ;
+    
 
 
 
@@ -44,7 +35,8 @@ public:
 private :
 
 int ID ,num ;
-QString nom , prenom ,dateN , dateI , type , Email , nomE , maladie ;
+QString nom , prenom, dateN,dateI,type , Email , nomE , maladie ;
+
 };
 
 #endif // CAVALIER_H

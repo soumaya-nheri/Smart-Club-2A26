@@ -18,14 +18,9 @@ public:
     int getid_cheval() ;
     int getid_evenement() ;
 
-    void setid_cavalier(int);
 
-    void setid_planning(int);
-    void sethoraire(QString);
-    void setappreciation(int);
-    void setid_coach(int);
-    void setid_cheval(int);
-    void setid_evenement(int);
+
+
     bool ajouter();
         QSqlQueryModel * afficher();
         bool supprimer(int);

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_5">
      <attribute name="title">
@@ -35,12 +35,12 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>461</width>
+        <width>451</width>
         <height>341</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -307,19 +307,6 @@
        <attribute name="title">
         <string>afficher </string>
        </attribute>
-       <widget class="QPushButton" name="afficher">
-        <property name="geometry">
-         <rect>
-          <x>360</x>
-          <y>290</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>afficher</string>
-        </property>
-       </widget>
        <widget class="QTableView" name="tab_cavalier">
         <property name="geometry">
          <rect>
@@ -649,7 +636,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -1156,7 +1143,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>imprimmer planning </string>
+         <string>imprimer planning </string>
         </property>
        </widget>
       </widget>
