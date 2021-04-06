@@ -38,15 +38,13 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     connection.cpp \
-    planning_cavalier.cpp \
-    smtp.cpp
+    planning_cavalier.cpp
 
 HEADERS += \
     cavalier.h \
         mainwindow.h \
     connection.h \
-    planning_cavalier.h \
-    smtp.h
+    planning_cavalier.h
 
 FORMS += \
         mainwindow.ui

@@ -5,6 +5,7 @@
 #include <QSqlQueryModel>
 #include"mainwindow.h"
 
+
 class planning_cavalier
 {
 public:

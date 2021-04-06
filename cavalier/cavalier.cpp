@@ -116,6 +116,7 @@ bool Cavalier::modifier(int ID,QString nom,QString prenom,QString dateN,QString 
     query.bindValue(":dateI",dateI);
     query.bindValue(":type", type);
     query.bindValue(":Email", Email);
+    query.bindValue(":nomE",nomE);
     query.bindValue(":num",res2);
     query.bindValue(":maladie",maladie);
     return    query.exec();

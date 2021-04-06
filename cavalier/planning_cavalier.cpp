@@ -6,6 +6,9 @@
 #include <QMessageBox>
 #include<QObject>
 #include "planning_cavalier.h"
+#include"QPinchGesture";
+#include<QUrlQuery>
+
 planning_cavalier::planning_cavalier()
 {   id_cavalier=0 ;
     id_planning=0;
@@ -100,7 +103,7 @@ bool planning_cavalier::modifier(int id_cavalier , int id_planning , QString hor
     query.prepare("update planning_cavalier set ID_CAVALIER=:id_cavalier,ID_PLANNING=:id_planning,HORAIRE=:horaire,APPRECIATION=:appreciation,ID_COACH=:id_coach,ID_CHEVAL=:id_cheval,ID_EVENEMENT=:id_evenement  where ID_PLANNING=:id_planning");
     query.bindValue(":id_cavalier",res);
     query.bindValue(":id_planning",res2);
-    query.bindValue(":horraire",horaire);
+    query.bindValue(":horaire",horaire);
     query.bindValue(":appreciation",res3);
     query.bindValue(":id_coach",res4);
     query.bindValue(":id_cheval", res5);

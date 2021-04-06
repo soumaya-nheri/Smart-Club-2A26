@@ -5,8 +5,6 @@
 #include <QSqlQueryModel>
 #include"mainwindow.h"
 #include "QDate"
-
-
 class Cavalier
 {
 public:

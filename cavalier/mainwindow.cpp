@@ -5,17 +5,64 @@
 #include "mainwindow.h"
 #include"QMessageBox"
 #include <QPainter>
-#include "smtp.h"
+
+
+
+#include <QPainter>
 #include <QPdfWriter>
 #include <QDesktopServices>
+#include <QUrl>
+#include<QComboBox>
+#include <QMessageBox>
+#include <QDebug>
+#include<QSystemTrayIcon>
+#include<QObject>
+
+#include <QMessageBox>
+
+
+
+#include <QPainter>
+#include <QPdfWriter>
+#include <QDesktopServices>
+#include <QUrl>
+
+#include <QPrinter>
+#include <QPrinter>
+#include <QPainter>
+#include <QPrintDialog>
+#include <QPieSlice>
+#include <QPieSeries>
+#include <QtCharts/QChartView>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMainWindow>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    animation=new QPropertyAnimation(ui->ajouter,"geomerty");
+    animation->setDuration(10000);
+    animation->setStartValue(ui->ajouter->geometry());
+    animation->setEndValue(QRect(200,200,100,50));
+    animation->start();
+
     ui->ID->setValidator(new QIntValidator(0,9999999,this));
     ui->Id_2->setValidator(new QIntValidator(0,9999999,this));
     ui->id_planning->setValidator(new QIntValidator(0,9999999,this));
+    ui->num->setValidator(new QIntValidator(0,9999999,this));
+    ui->appreciation->setValidator(new QIntValidator(0,9999999,this));
+    ui->id_coach->setValidator(new QIntValidator(0,9999999,this));
+    ui->id_cheval->setValidator(new QIntValidator(0,9999999,this));
+    ui->id_evenement->setValidator(new QIntValidator(0,9999999,this));
+    ui->ID_COACH->setValidator(new QIntValidator(0,9999999,this));
+    ui->ID_CHEVAL->setValidator(new QIntValidator(0,9999999,this));
+    ui->ID_EVENEMENT->setValidator(new QIntValidator(0,9999999,this));
+
+
+
+
 
 
 }
@@ -24,7 +71,34 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+bool MainWindow::verifID()
+{
+    if (ui->ID->text().contains(QRegExp("[^0-9 ]") ) || ui->ID->text().isEmpty())
+    {
+        ui->ID->clear();
 
+        ui->ID->setPlaceholderText("contient que des chiffres") ;
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+
+}
+bool MainWindow::verifNOM()
+{
+    if (ui->nom->text().contains(QRegExp("[^a-zA-Z ]") ) || ui->nom->text().isEmpty())
+    {
+        ui->nom->clear();
+        ui->nom->setPlaceholderText("contient que des caracteres") ;
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
 void MainWindow::on_ajouter_clicked()
 {
     int ID=ui->ID->text().toInt ();
@@ -40,10 +114,13 @@ void MainWindow::on_ajouter_clicked()
 
  Cavalier c(ID,nom,prenom,dateN,dateI,type ,Email,nomE,num, maladie);
 bool test=c.ajouter();
+if((verifID()&&(verifNOM())))
+{
 if(test)
 {QMessageBox msgBox ;
     QMessageBox::information(this,"information","cavalier ajouté");
 
+}
 }
 else {QMessageBox msgBox ;
     QMessageBox::information(this,"information","echec lors de l ajout");
@@ -145,12 +222,12 @@ void MainWindow::on_ajouter_planning_clicked()
 
 
 
-void MainWindow::on_afficher_planning_2_currentChanged(int index)
+/*void MainWindow::on_afficher_planning_2_currentChanged(int index)
 {
    planning_cavalier p  ;
     ui->afficher_planning->setModel(p.afficher()) ;
 }
-
+*/
 void MainWindow::on_supprimer_cavalier_clicked()
 {
 
@@ -206,8 +283,8 @@ else
 
 void MainWindow::on_envoyermail_clicked()
 {
-    smtp* smtp = new smtp("mariem.aljene0@gmail.com","zainebtriki ","smtp.gmail.com",465);
-    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+   // smtp* smtp = new smtp("mariem.aljene0@gmail.com","zainebtriki ","smtp.gmail.com",465);
+    //connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
 }
 
 void MainWindow::on_imprimer_planning_clicked()
@@ -224,24 +301,24 @@ void MainWindow::on_imprimer_planning_clicked()
     painter.drawRect(0,3000,9600,500);
     painter.setFont(QFont("Arial", 9));
     painter.drawText(200,3300,"id_cavalier");
-    painter.drawText(1700,3300,"id_planning");
-    painter.drawText(3200,3300,"horaire");
-    painter.drawText(6600,3300,"appreciation");
-    painter.drawText(4900,3300,"id_coach");
-    painter.drawText(8100,3300,"id_cheval ");
-    painter.drawText(9600,3300,"id_evenement ");
+    painter.drawText(1200,3300,"id_planning");
+    painter.drawText(2400,3300,"horaire");
+    painter.drawText(4000,3300,"appreciation");
+    painter.drawText(5000,3300,"id_coach");
+    painter.drawText(5800,3300,"id_cheval ");
+    painter.drawText(6600,3300,"id_evenement ");
     QSqlQuery query;
     query.prepare("select * from planning_cavalier");
     query.exec();
     while (query.next())
     {
         painter.drawText(200,i,query.value(0).toString());
-        painter.drawText(1700,i,query.value(1).toString());
-        painter.drawText(3200,i,query.value(2).toString());
-        painter.drawText(4900,i,query.value(3).toString());
-        painter.drawText(6600,i,query.value(4).toString());
-        painter.drawText(8100,i,query.value(5).toString());
-        painter.drawText(9600,i,query.value(6).toString());
+        painter.drawText(1200,i,query.value(1).toString());
+        painter.drawText(2400,i,query.value(2).toString());
+        painter.drawText(4000,i,query.value(3).toString());
+        painter.drawText(5000,i,query.value(4).toString());
+        painter.drawText(5800,i,query.value(5).toString());
+        painter.drawText(6600,i,query.value(6).toString());
 
         i = i + 500;
     }
@@ -257,7 +334,16 @@ void MainWindow::on_imprimer_planning_clicked()
 
 }
 }
-void MainWindow::on_satat_clicked()
-{
 
+
+void MainWindow::on_afficher_planning_2_clicked()
+{ planning_cavalier p  ;
+    ui->afficher_planning->setModel(p.afficher()) ;
 }
+
+
+
+//QVector<double> MainWindow::on_satat_clicked()
+//{
+
+//}

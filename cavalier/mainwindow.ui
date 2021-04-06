@@ -13,18 +13,59 @@
   <property name="windowTitle">
    <string>Gestion des Clients</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(252, 228, 255);</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QTabWidget" name="plannig">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>0</y>
-      <width>491</width>
+      <width>481</width>
       <height>391</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QTabWidget::pane { /* The tab widget frame */
+    border-top: 2px solid #C2C7CB;
+}
+
+QTabWidget::tab-bar {
+    left: 5px; /* move to the right by 5px */
+}
+
+/* Style the tab using the tab sub-control. Note that
+    it reads QTabBar _not_ QTabWidget */
+QTabBar::tab {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+    border: 2px solid #C4C4C3;
+    border-bottom-color: #C2C7CB; /* same as the pane color */
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    min-width: 8ex;
+    padding: 2px;
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #fafafa, stop: 0.4 #f4f4f4,
+                                stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
+}
+
+QTabBar::tab:selected {
+    border-color: #9B9B9B;
+    border-bottom-color: #C3C7CB; /* same as pane color */
+}
+
+QTabBar::tab:!selected {
+    margin-top: 2px; /* make non-selected tabs look smaller */
+}</string>
+    </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_5">
      <attribute name="title">
@@ -33,8 +74,8 @@
      <widget class="QTabWidget" name="affiche_cavaliers">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
+        <x>0</x>
+        <y>0</y>
         <width>451</width>
         <height>341</height>
        </rect>
@@ -184,6 +225,15 @@
            <height>20</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+         </property>
         </widget>
         <widget class="QLineEdit" name="prenom">
          <property name="geometry">
@@ -193,6 +243,15 @@
            <width>113</width>
            <height>20</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="type">
@@ -204,6 +263,15 @@
            <height>20</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+         </property>
         </widget>
         <widget class="QLineEdit" name="Email">
          <property name="geometry">
@@ -213,6 +281,15 @@
            <width>113</width>
            <height>20</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="nomE">
@@ -224,6 +301,15 @@
            <height>20</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+         </property>
         </widget>
         <widget class="QLineEdit" name="num">
          <property name="geometry">
@@ -233,6 +319,15 @@
            <width>113</width>
            <height>20</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="maladie">
@@ -244,6 +339,15 @@
            <height>20</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+         </property>
         </widget>
         <widget class="QDateEdit" name="dateN">
          <property name="geometry">
@@ -253,6 +357,13 @@
            <width>110</width>
            <height>22</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QSpinBox {
+    padding-right: 15px; /* make room for the arrows */
+    border-image: url(:/images/frame.png) 4;
+    border-width: 3;
+}</string>
          </property>
         </widget>
         <widget class="QDateEdit" name="dateI">
@@ -270,9 +381,31 @@
           <rect>
            <x>270</x>
            <y>180</y>
-           <width>75</width>
+           <width>84</width>
            <height>23</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
          </property>
          <property name="text">
           <string>ajouter </string>
@@ -300,6 +433,16 @@
            <height>20</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">
+QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background:pink;
+    selection-background-color: darkgray;
+}</string>
+         </property>
         </widget>
        </widget>
       </widget>
@@ -316,6 +459,12 @@
           <height>251</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QTableView QTableCornerButton::section {
+    background: red;
+    border: 2px outset red;
+}</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_3">
@@ -325,11 +474,34 @@
        <widget class="QPushButton" name="supprimer">
         <property name="geometry">
          <rect>
-          <x>320</x>
+          <x>303</x>
           <y>110</y>
-          <width>75</width>
+          <width>101</width>
           <height>23</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}
+url(C:\Users\mariem\Pictures\pics\supprimer.png)</string>
         </property>
         <property name="text">
          <string>supprimer</string>
@@ -343,6 +515,15 @@
           <width>113</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_21">
@@ -501,6 +682,15 @@
            <height>20</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+         </property>
         </widget>
         <widget class="QLineEdit" name="PRENOM">
          <property name="geometry">
@@ -510,6 +700,15 @@
            <width>113</width>
            <height>20</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="TYPE">
@@ -521,6 +720,15 @@
            <height>20</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+         </property>
         </widget>
         <widget class="QLineEdit" name="email">
          <property name="geometry">
@@ -530,6 +738,15 @@
            <width>113</width>
            <height>20</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="NOME">
@@ -541,6 +758,15 @@
            <height>20</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+         </property>
         </widget>
         <widget class="QLineEdit" name="NUM">
          <property name="geometry">
@@ -550,6 +776,15 @@
            <width>113</width>
            <height>20</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="MALADIE">
@@ -561,6 +796,15 @@
            <height>20</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+         </property>
         </widget>
         <widget class="QDateEdit" name="DATEN">
          <property name="geometry">
@@ -570,6 +814,15 @@
            <width>110</width>
            <height>22</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QDateEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background:pink;
+    selection-background-color: darkgray;
+}</string>
          </property>
         </widget>
         <widget class="QDateEdit" name="DATEI">
@@ -581,15 +834,46 @@
            <height>22</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QDateEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+         </property>
         </widget>
         <widget class="QPushButton" name="modifier">
          <property name="geometry">
           <rect>
            <x>270</x>
            <y>180</y>
-           <width>75</width>
+           <width>84</width>
            <height>23</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
          </property>
          <property name="text">
           <string>modifier </string>
@@ -617,6 +901,15 @@
            <height>20</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+         </property>
         </widget>
        </widget>
       </widget>
@@ -629,11 +922,23 @@
      <widget class="QTabWidget" name="mail">
       <property name="geometry">
        <rect>
-        <x>-10</x>
+        <x>20</x>
         <y>0</y>
-        <width>471</width>
-        <height>351</height>
+        <width>511</width>
+        <height>371</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#evilButton {
+    background-color: red;
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+    min-width: 10em;
+    padding: 6px;
+}</string>
       </property>
       <property name="currentIndex">
        <number>1</number>
@@ -729,6 +1034,15 @@
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="appreciation">
         <property name="geometry">
@@ -738,6 +1052,15 @@
           <width>113</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="id_coach">
@@ -749,6 +1072,15 @@
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="id_cheval">
         <property name="geometry">
@@ -758,6 +1090,15 @@
           <width>113</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="id_evenement">
@@ -769,15 +1110,46 @@
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+        </property>
        </widget>
        <widget class="QPushButton" name="ajouter_planning">
         <property name="geometry">
          <rect>
           <x>320</x>
           <y>130</y>
-          <width>75</width>
+          <width>84</width>
           <height>23</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
         </property>
         <property name="text">
          <string>ajouter</string>
@@ -791,6 +1163,15 @@
           <width>113</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_28">
@@ -809,11 +1190,20 @@
        <widget class="QDateTimeEdit" name="horaire_2">
         <property name="geometry">
          <rect>
-          <x>90</x>
+          <x>80</x>
           <y>100</y>
-          <width>121</width>
+          <width>151</width>
           <height>22</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QDateTimeEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background:pink;
+    selection-background-color: darkgray;
+}</string>
         </property>
        </widget>
       </widget>
@@ -830,15 +1220,43 @@
           <height>281</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QTableView QTableCornerButton::section {
+    background: red;
+    border: 2px outset red;
+}</string>
+        </property>
        </widget>
        <widget class="QPushButton" name="satat">
         <property name="geometry">
          <rect>
-          <x>310</x>
-          <y>290</y>
+          <x>340</x>
+          <y>300</y>
           <width>121</width>
           <height>31</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">	QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
         </property>
         <property name="text">
          <string>cavalier de la semaine</string>
@@ -853,8 +1271,65 @@
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+        </property>
         <property name="text">
          <string>imprimer planning </string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="afficher_planning_2">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>300</y>
+          <width>84</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+        </property>
+        <property name="text">
+         <string>afficher </string>
         </property>
        </widget>
       </widget>
@@ -884,15 +1359,46 @@
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+        </property>
        </widget>
        <widget class="QPushButton" name="supprimer_cavalier">
         <property name="geometry">
          <rect>
           <x>310</x>
           <y>150</y>
-          <width>75</width>
+          <width>84</width>
           <height>23</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
         </property>
         <property name="text">
          <string>supprimer</string>
@@ -908,12 +1414,34 @@
          <rect>
           <x>350</x>
           <y>250</y>
-          <width>75</width>
+          <width>84</width>
           <height>23</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+        </property>
         <property name="text">
-         <string>modifeir </string>
+         <string>modifier </string>
         </property>
        </widget>
        <widget class="QLabel" name="label_32">
@@ -926,7 +1454,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>CIN cavalier</string>
+         <string>IDcavalier</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_33">
@@ -939,7 +1467,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>CIN planning</string>
+         <string>id planning</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_34">
@@ -1016,6 +1544,15 @@
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="CIN_PLANNING">
         <property name="geometry">
@@ -1025,6 +1562,15 @@
           <width>113</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="APPRECIATION">
@@ -1036,6 +1582,15 @@
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="ID_COACH">
         <property name="geometry">
@@ -1045,6 +1600,15 @@
           <width>113</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="ID_CHEVAL">
@@ -1056,6 +1620,15 @@
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="ID_EVENEMENT">
         <property name="geometry">
@@ -1065,6 +1638,15 @@
           <width>113</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
         </property>
        </widget>
        <widget class="QDateTimeEdit" name="HORAIRE">
@@ -1090,6 +1672,28 @@
           <width>131</width>
           <height>23</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
         </property>
         <property name="text">
          <string>envoyer mail</string>
@@ -1143,6 +1747,15 @@
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="objet_mail">
         <property name="geometry">
@@ -1152,6 +1765,15 @@
           <width>113</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
         </property>
        </widget>
        <widget class="QTextEdit" name="text_mail">
@@ -1178,6 +1800,12 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menugestion_cavalier">
+    <property name="title">
+     <string>gestion cavalier</string>
+    </property>
+   </widget>
+   <addaction name="menugestion_cavalier"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
