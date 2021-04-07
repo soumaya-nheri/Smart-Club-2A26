@@ -29,6 +29,7 @@ private slots:
 
     void on_pb_ajouter2_clicked();
 
+
     void on_pb_modifier_clicked();
 
     void on_pb_rechercher_clicked();
