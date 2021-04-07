@@ -37,7 +37,7 @@
 
     QString res= QString::number(Id_cheval);
 
-    query.prepare("INSERT INTO cheval (Id_cheval,Nom_activite,date_activite,duree,Id_cavalier) "
+    query.prepare("INSERT INTO PLANNINGCHEVAL (Id_cheval,Nom_activite,date_activite,duree,Id_cavalier) "
                         "VALUES (:Id_cheval,:Nom_activite,:date_activite,:duree,:Id_cavalier)");
 
     query.bindValue(":Id_cheval",res);
@@ -58,7 +58,7 @@
     QSqlQueryModel * planningCheval::afficher()
     {QSqlQueryModel * model= new QSqlQueryModel();
 
-    model->setQuery("select * from cheval");
+    model->setQuery("select * from PLANNINGCHEVAL");
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_cheval"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom_activite"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("date_activite"));
@@ -76,8 +76,8 @@
 
         QString res= QString::number(ID);
 
-        query.prepare("Delete from cheval where ID= :Id_cheval");
-        query.bindValue(":Id_cheval", res);
+        query.prepare("Delete from PLANNINGCHEVAL where Id_cheval= :ID");
+        query.bindValue(":ID", res);
 
         return    query.exec();
     }
@@ -90,7 +90,7 @@
         QString res= QString::number(Id_cheval);
         QString res2= QString::number(Id_cavalier);
 
-        query.prepare("update cheval set ID=:Id_cheval,NOM_ACTIVITE=:Nom_activite,DATE_ACTIVITE=:date_activite,DUREE=:duree,ID_CAVALIER=:Id_cavalier, where ID=:Id_cheval");
+        query.prepare("update PLANNINGCHEVAL set ID=:Id_cheval,NOM_ACTIVITE=:Nom_activite,DATE_ACTIVITE=:date_activite,DUREE=:duree,ID_CAVALIER=:Id_cavalier, where ID=:Id_cheval");
         query.bindValue(":Id_cheval",res);
         query.bindValue(":Nom_activite",Nom_activite);
         query.bindValue(":date_activite", date_activite);
@@ -99,5 +99,17 @@
 
         return    query.exec();
 
+    }
+
+    QSqlQueryModel * planningCheval::tri()
+    {QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("select * FROM PLANNINGCHEVAL ORDER BY date_activite asc");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_cheval"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom_activite"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("date_activite"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("duree"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("Id_cavalier"));
+
+        return model;
     }
 

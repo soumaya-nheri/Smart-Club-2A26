@@ -20,7 +20,7 @@ class planningCheval
     QSqlQueryModel * afficher();
     bool supprimer(int);
     bool modifier(int,QString,QString,QString,int);
-
+     QSqlQueryModel * tri();
 
 
 private:

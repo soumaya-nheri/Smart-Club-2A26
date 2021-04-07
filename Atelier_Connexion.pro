@@ -29,13 +29,17 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     connection.cpp \
-    planningcheval.cpp
+    notifications.cpp \
+    planningcheval.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
     cheval.h \
         mainwindow.h \
     connection.h \
-    planningcheval.h
+    notifications.h \
+    planningcheval.h \
+    qcustomplot.h
 
 FORMS += \
         mainwindow.ui
