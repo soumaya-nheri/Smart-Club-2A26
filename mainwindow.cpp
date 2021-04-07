@@ -53,9 +53,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Id_cheval_3->setValidator(new QIntValidator(0,9999999,this));
     ui->poidsChev_2->setValidator(new QIntValidator(0,9999999,this));
 
-
-    //ui->tab_planning->setModel(tmp.afficher());//refresh
-    //ui->tableView->setModel(temp.afficher());//refresh*/
+*/
+    ui->tab_planning->setModel(tmp.afficher());//refresh
+    ui->tableView_2->setModel(temp.afficher());//refresh
+    ui->comboBox_ID_cheval->setModel(temp.afficher());
 
 }
 
@@ -296,23 +297,21 @@ void MainWindow::on_afficher_plann_clicked()
 
 void MainWindow::on_modifier_plann_clicked()
 {
-    int Id_cheval = ui->Id_cheval->text().toInt();
-       QString Nom_activite= ui->Nom_activite->text();
-       QString date_activite = ui->date_activite->text();
-       QString duree= ui->duree->text();
-       int Id_cavalier= ui->Id_cavalier->text().toInt();
+    int id= ui->Id_cheval_3->text().toInt();
+    QString Nom_activite=ui->Nom_activite_2->text();
 
+    bool test=tmp.modifier(id,Nom_activite);
+    //N.notifications_modifierarchives();
 
+    if (test)
+    {ui->tab_planning->setModel(tmp.afficher());//refresh
+        QMessageBox::information(this, "success ", "modifier un cheval");
 
-
-
-
-       bool test=tmp.modifier(Id_cheval, Nom_activite, date_activite, duree, Id_cavalier);
-       if (test)
-       {
-           ui->tab_planning->setModel(tmp.afficher());
-
-       }
+    }
+    else
+        QMessageBox::critical(nullptr, QObject::tr("Modifier un cheval"),
+                              QObject::tr("Erreur !.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
 }
 
 void MainWindow::on_supprimer_plann_clicked()
@@ -393,25 +392,22 @@ void MainWindow::on_afficher_cheval_clicked()
 void MainWindow::on_modifier_cheval_clicked()
 {
 
-    int Id_cheval=ui->idChev->text().toInt ();
-    QString Nom=ui->nomChev->text() ;
-    QString genre=ui->genreChev->text () ;
-    QString date_de_naiss =ui->dateChev->text();
-    QString  vaccins=ui->vaccinsChev->text();
-    QString date_limite_vacc =ui->dateLimiteVaccin ->text();
-    int poids=ui->poidsChev->text().toInt ();
-    QString race=ui->raceChev->text () ;
-    QString nationnalite =ui->nationnaliteChev->text();
-    int num_box=ui->num_box->text().toInt ();
-    QString type_act =ui->type_actChev->text();
+    int Id= ui->comboBox_ID_cheval->currentText().toInt();
+    int numB= ui->numbox_2->text().toInt();
+    bool test=temp.modifier(Id,numB);
+    if (test)
+    {
+        ui->tableView_2->setModel(temp.afficher());//refresh
+        QMessageBox msgBox ;
+        QMessageBox::information(this,"information","cheval modifié");
+    }
+    else
+    {
+        QMessageBox::critical(nullptr, QObject::tr("modifier un cheval"),
+                              QObject::tr("Erreur !.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
 
-    cheval c(Id_cheval,Nom,genre,date_de_naiss,vaccins,date_limite_vacc,poids,race,nationnalite,num_box,type_act);
-    bool test=c.modifier(Id_cheval,Nom,genre,date_de_naiss,vaccins,date_limite_vacc,poids,race,nationnalite,num_box,type_act);
-       if (test)
-       {
-           ui->tableView_3->setModel(temp.afficher());
-
-       }
+    }
 }
 
 void MainWindow::on_supprimer_cheval_clicked()
@@ -420,12 +416,12 @@ void MainWindow::on_supprimer_cheval_clicked()
        bool test=c.supprimer(ID);
        if(test)
        {
-           ui->tableView_3->setModel(temp.afficher());//refresh
+           ui->tableView_2->setModel(temp.afficher());//refresh
            QMessageBox msgBox ;
            QMessageBox::information(this,"information","cheval supprimé");
        }
 
-       else
+     else
        {
            QMessageBox::critical(nullptr, QObject::tr("Supprimer un cheval"),
                                  QObject::tr("Erreur !.\n"
@@ -459,9 +455,12 @@ void MainWindow::on_QUITTER_4_clicked()
 
 void MainWindow::on_recherche_chev_clicked() //recherche
 {
-   QString N=ui->lineEdit_recherche->text();
     cheval c;
-    ui->tableView_2->setModel(temp.rechercher(N)) ;
+    QString N=ui->lineEdit_recherche->text();
+    ui->tableView_2->setModel(c.rechercher(N)) ;
+
+    QString Z=ui->lineEdit_recherche->text();
+    ui->tableView_2->setModel(temp.rechercher(Z)) ;
 }
 
 QVector<double>MainWindow::Statistique()
@@ -645,12 +644,35 @@ void MainWindow::on_imprimer_planning_clicked()
 
 void MainWindow::on_pushButton_clicked()//tri
 {
-     ui->tableView_2->setModel(temp.trier());
-     ui->tableView_2->setModel(temp.trie());
+     cheval c;
+     ui->tableView_2->setModel(c.trier());
+     ui->tableView_2->setModel(c.trie());
+     ui->tableView_2->setModel(c.trie2());
 
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_pushButton_2_clicked()//tri planning
 {
     ui->tab_planning->setModel(tmp.tri());
+    ui->tab_planning->setModel(tmp.trie());
+    ui->tab_planning->setModel(tmp.tri3());
+}
+
+
+
+
+void MainWindow::on_comboBox_ID_cheval_activated(const QString &arg1)
+{
+    QString ID=ui->comboBox_ID_cheval->currentText();
+    QSqlQuery queryy ;
+    queryy.prepare("SELECT * from CHEVAL where ID_CHEVAL=='"+ID+"'");
+    if(queryy.exec())
+    {
+        while(queryy.next())
+        {
+            ui->numbox_2->setText(queryy.value(10).toString()) ;
+
+
+        }
+    }
 }

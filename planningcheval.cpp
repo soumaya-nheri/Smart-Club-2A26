@@ -85,17 +85,14 @@
 
 
 
-    bool planningCheval::modifier(int Id_cheval,QString Nom_activite,QString date_activite,QString duree,int Id_cavalier)
+    bool planningCheval::modifier(int Id_cheval,QString Nom_activite)
     { QSqlQuery query;
         QString res= QString::number(Id_cheval);
-        QString res2= QString::number(Id_cavalier);
 
-        query.prepare("update PLANNINGCHEVAL set ID=:Id_cheval,NOM_ACTIVITE=:Nom_activite,DATE_ACTIVITE=:date_activite,DUREE=:duree,ID_CAVALIER=:Id_cavalier, where ID=:Id_cheval");
-        query.bindValue(":Id_cheval",res);
-        query.bindValue(":Nom_activite",Nom_activite);
-        query.bindValue(":date_activite", date_activite);
-        query.bindValue(":duree",duree);
-        query.bindValue(":date_activite",res2);
+
+        query.prepare("UPDATE PLANNINGCHEVAL set ID_CHEVAL=:Id_cheval,NOM_ACTIVITE=:Nom_activite   where ID_CHEVAL=:Id_cheval ");
+        query.bindValue(":Id_cheval", res);
+        query.bindValue(":Nom_activite",Nom_activite );
 
         return    query.exec();
 
@@ -104,6 +101,28 @@
     QSqlQueryModel * planningCheval::tri()
     {QSqlQueryModel * model= new QSqlQueryModel();
     model->setQuery("select * FROM PLANNINGCHEVAL ORDER BY date_activite asc");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_cheval"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom_activite"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("date_activite"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("duree"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("Id_cavalier"));
+
+        return model;
+    }
+    QSqlQueryModel * planningCheval::trie()
+    {QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("select * FROM PLANNINGCHEVAL ORDER BY duree asc");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_cheval"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom_activite"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("date_activite"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("duree"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("Id_cavalier"));
+
+        return model;
+    }
+    QSqlQueryModel * planningCheval::tri3()
+    {QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("select * FROM PLANNINGCHEVAL ORDER BY Nom_activite asc");
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_cheval"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom_activite"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("date_activite"));

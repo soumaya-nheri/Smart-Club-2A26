@@ -101,6 +101,10 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_CHEVAL_currentChanged(int index);
+
+    void on_comboBox_ID_cheval_activated(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     planningCheval tmp;
