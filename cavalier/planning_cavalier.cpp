@@ -113,5 +113,31 @@ bool planning_cavalier::modifier(int id_cavalier , int id_planning , QString hor
 
 }
 
+QSqlQueryModel * planning_cavalier::rechercher(QString N )
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("SELECT * FROM planning_cavalier  WHERE id_planning ='"+N+"' ;");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("id_cavalier"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("id_planning"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("horaire"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("appreciation"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("id_coach"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("id_cheval"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("id_evenement"));
 
+    return model ;
+}
+QSqlQueryModel * planning_cavalier::trier()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("select * FROM planning_cavalier ORDER BY horaire asc");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("id_cavalier"));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("id_planning"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("horaire"));
+model->setHeaderData(3, Qt::Horizontal, QObject::tr("appreciation"));
+model->setHeaderData(4, Qt::Horizontal, QObject::tr("id_coach"));
+model->setHeaderData(5, Qt::Horizontal, QObject::tr("id_cheval"));
+model->setHeaderData(6, Qt::Horizontal, QObject::tr("id_evenement"));
 
+    return model;
+}

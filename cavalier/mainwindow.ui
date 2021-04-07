@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>554</width>
-    <height>454</height>
+    <width>748</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,7 @@
       <x>20</x>
       <y>0</y>
       <width>481</width>
-      <height>391</height>
+      <height>411</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -76,12 +76,12 @@ QTabBar::tab:!selected {
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>451</width>
-        <height>341</height>
+        <width>501</width>
+        <height>351</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -359,11 +359,23 @@ QTabBar::tab:!selected {
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">QSpinBox {
-    padding-right: 15px; /* make room for the arrows */
-    border-image: url(:/images/frame.png) 4;
-    border-width: 3;
+          <string notr="true">QDateEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
 }</string>
+         </property>
+         <property name="maximumDateTime">
+          <datetime>
+           <hour>23</hour>
+           <minute>59</minute>
+           <second>59</second>
+           <year>2021</year>
+           <month>12</month>
+           <day>31</day>
+          </datetime>
          </property>
         </widget>
         <widget class="QDateEdit" name="dateI">
@@ -374,6 +386,15 @@ QTabBar::tab:!selected {
            <width>110</width>
            <height>22</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QDateEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
          </property>
         </widget>
         <widget class="QPushButton" name="ajouter">
@@ -453,10 +474,10 @@ QLineEdit {
        <widget class="QTableView" name="tab_cavalier">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>20</y>
+          <x>20</x>
+          <y>40</y>
           <width>421</width>
-          <height>251</height>
+          <height>271</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -464,6 +485,95 @@ QLineEdit {
     background: red;
     border: 2px outset red;
 }</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="recherche_cav">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>10</y>
+          <width>84</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+        </property>
+        <property name="text">
+         <string>recherche </string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="recherche_cavalier">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>10</y>
+          <width>221</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="tri_cavalier">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>10</y>
+          <width>84</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+        </property>
+        <property name="text">
+         <string>trie  </string>
         </property>
        </widget>
       </widget>
@@ -919,13 +1029,13 @@ QPushButton:default {
      <attribute name="title">
       <string>planning</string>
      </attribute>
-     <widget class="QTabWidget" name="mail">
+     <widget class="QTabWidget" name="statistiques">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>0</y>
-        <width>511</width>
-        <height>371</height>
+        <width>581</width>
+        <height>361</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1214,10 +1324,10 @@ QPushButton:default {
        <widget class="QTableView" name="afficher_planning">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>10</y>
-          <width>431</width>
-          <height>281</height>
+          <x>10</x>
+          <y>60</y>
+          <width>411</width>
+          <height>241</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -1227,48 +1337,13 @@ QPushButton:default {
 }</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="satat">
+       <widget class="QPushButton" name="recherche">
         <property name="geometry">
          <rect>
-          <x>340</x>
-          <y>300</y>
-          <width>121</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">	QPushButton {
-    border: 2px solid #8f8f91;
-    border-radius: 6px;
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
-    min-width: 80px;
-}
-
-QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
-}
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
-        </property>
-        <property name="text">
-         <string>cavalier de la semaine</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="imprimer_planning">
-        <property name="geometry">
-         <rect>
-          <x>130</x>
-          <y>300</y>
-          <width>151</width>
-          <height>20</height>
+          <x>60</x>
+          <y>20</y>
+          <width>84</width>
+          <height>23</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -1294,14 +1369,69 @@ QPushButton:default {
 }</string>
         </property>
         <property name="text">
-         <string>imprimer planning </string>
+         <string>recherche</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="recherche_planning">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>20</y>
+          <width>113</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: pink;
+    selection-background-color: darkgray;
+}
+</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="tri_planning_cavalier">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>310</y>
+          <width>84</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+        </property>
+        <property name="text">
+         <string>trie </string>
         </property>
        </widget>
        <widget class="QPushButton" name="afficher_planning_2">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>300</y>
+          <x>170</x>
+          <y>310</y>
           <width>84</width>
           <height>23</height>
          </rect>
@@ -1330,6 +1460,41 @@ QPushButton:default {
         </property>
         <property name="text">
          <string>afficher </string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="imprimer_planning">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>310</y>
+          <width>151</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+        </property>
+        <property name="text">
+         <string>imprimer planning </string>
         </property>
        </widget>
       </widget>
@@ -1787,6 +1952,21 @@ QPushButton:default {
         </property>
        </widget>
       </widget>
+      <widget class="QWidget" name="tab_12">
+       <attribute name="title">
+        <string>statistiques</string>
+       </attribute>
+       <widget class="QCustomPlot" name="customPlot">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>421</width>
+          <height>311</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </widget>
    </widget>
@@ -1796,7 +1976,7 @@ QPushButton:default {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>554</width>
+     <width>748</width>
      <height>22</height>
     </rect>
    </property>
@@ -1818,6 +1998,13 @@ QPushButton:default {
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QTableWidget</extends>
+   <header>qcustomplot.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -29,7 +29,10 @@ public:
         QSqlQueryModel * afficher();
         bool supprimer(int);
         bool modifier(int,QString,QString,QString,QString,QString, QString, QString ,int ,QString );
-
+        QSqlQueryModel * rechercher(QString);
+        QSqlQueryModel * rechercher_nom(QString);
+        QSqlQueryModel * trier();
+        QSqlQueryModel * trie();
 private :
 
 int ID ,num ;

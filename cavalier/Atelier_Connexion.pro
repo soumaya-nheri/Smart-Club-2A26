@@ -38,15 +38,18 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     connection.cpp \
-    planning_cavalier.cpp
+    planning_cavalier.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
     cavalier.h \
         mainwindow.h \
     connection.h \
-    planning_cavalier.h
+    planning_cavalier.h \
+    qcustomplot.h
 
 FORMS += \
+        admin.ui \
         mainwindow.ui
 
 # Default rules for deployment.

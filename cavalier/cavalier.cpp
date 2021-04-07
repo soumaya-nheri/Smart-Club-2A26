@@ -123,8 +123,72 @@ bool Cavalier::modifier(int ID,QString nom,QString prenom,QString dateN,QString 
 
 }
 
+QSqlQueryModel * Cavalier::rechercher(QString N )
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("SELECT * FROM Cavalier WHERE ID ='"+N+"' ;");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("dateI"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("dateN"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("type"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("Email"));
+    model->setHeaderData(7, Qt::Horizontal, QObject::tr("nomE"));
+    model->setHeaderData(8, Qt::Horizontal, QObject::tr("num"));
+    model->setHeaderData(9, Qt::Horizontal, QObject::tr("maladie"));
+    return model ;
+}
+QSqlQueryModel * Cavalier::rechercher_nom(QString s )
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("SELECT * FROM Cavalier WHERE nom ='"+s+"' ;");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("dateI"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("dateN"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("type"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("Email"));
+    model->setHeaderData(7, Qt::Horizontal, QObject::tr("nomE"));
+    model->setHeaderData(8, Qt::Horizontal, QObject::tr("num"));
+    model->setHeaderData(9, Qt::Horizontal, QObject::tr("maladie"));
+    return model ;
+}
 
+QSqlQueryModel * Cavalier::trier()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("select * FROM Cavalier ORDER BY nom asc");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+model->setHeaderData(3, Qt::Horizontal, QObject::tr("dateI"));
+model->setHeaderData(4, Qt::Horizontal, QObject::tr("dateN"));
+model->setHeaderData(5, Qt::Horizontal, QObject::tr("type"));
+model->setHeaderData(6, Qt::Horizontal, QObject::tr("Email"));
+model->setHeaderData(7, Qt::Horizontal, QObject::tr("nomE"));
+model->setHeaderData(8, Qt::Horizontal, QObject::tr("num"));
+model->setHeaderData(9, Qt::Horizontal, QObject::tr("maladie"));
 
+    return model;
+}
+QSqlQueryModel * Cavalier::trie()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+model->setQuery("select * FROM Cavalier ORDER BY dateI asc");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+model->setHeaderData(3, Qt::Horizontal, QObject::tr("dateI"));
+model->setHeaderData(4, Qt::Horizontal, QObject::tr("dateN"));
+model->setHeaderData(5, Qt::Horizontal, QObject::tr("type"));
+model->setHeaderData(6, Qt::Horizontal, QObject::tr("Email"));
+model->setHeaderData(7, Qt::Horizontal, QObject::tr("nomE"));
+model->setHeaderData(8, Qt::Horizontal, QObject::tr("num"));
+model->setHeaderData(9, Qt::Horizontal, QObject::tr("maladie"));
 
+    return model;
+}
 
 
