@@ -65,7 +65,7 @@ QTabBar::tab:!selected {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_5">
      <attribute name="title">
@@ -81,7 +81,7 @@ QTabBar::tab:!selected {
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -1051,7 +1051,7 @@ QPushButton:default {
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -1700,7 +1700,7 @@ QPushButton:default {
          <string>ID evenement</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="CIN_CAVALIER">
+       <widget class="QLineEdit" name="ID_CAVALIER">
         <property name="geometry">
          <rect>
           <x>100</x>
@@ -1719,7 +1719,7 @@ QPushButton:default {
 }</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="CIN_PLANNING">
+       <widget class="QLineEdit" name="ID_PLANNING">
         <property name="geometry">
          <rect>
           <x>100</x>

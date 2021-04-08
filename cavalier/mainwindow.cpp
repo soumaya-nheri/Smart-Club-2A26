@@ -366,16 +366,16 @@ void MainWindow::on_affiche_cavaliers_currentChanged(int index)
 
 void MainWindow::on_modifier_clicked()
 {
-        int ID=ui->ID->text().toInt ();
-        QString nom=ui->nom->text () ;
-        QString prenom=ui->prenom->text () ;
-        QString dateN=ui->dateN->text () ;
-        QString  dateI=ui->dateI->text () ;
-        QString type=ui->type->text () ;
-        QString Email=ui->Email->text () ;
-        QString nomE=ui->nomE->text () ;
-        int num=ui->num->text().toInt ();
-        QString maladie=ui->maladie->text () ;
+        int ID=ui->Id->text().toInt ();
+        QString nom=ui->NOM->text () ;
+        QString prenom=ui->PRENOM->text () ;
+        QString dateN=ui->DATEN->text () ;
+        QString  dateI=ui->DATEI->text () ;
+        QString type=ui->TYPE->text () ;
+        QString Email=ui->email->text () ;
+        QString nomE=ui->NOME->text () ;
+        int num=ui->NUM->text().toInt ();
+        QString maladie=ui->MALADIE->text () ;
          Cavalier c(ID,nom,prenom,dateN,dateI,type ,Email,nomE,num, maladie);
 
     bool test1=c.modifier(ID, nom,prenom,dateN,dateI, type, Email,nomE,num, maladie);
@@ -482,13 +482,13 @@ void MainWindow::on_supprimer_cavalier_clicked()
 
 
 void MainWindow::on_modifier_planning_clicked()
-{int id_cavalier=ui->id_cavalier->text().toInt ();
-    int id_planning=ui->id_planning->text().toInt ();
-    QString horaire=ui->horaire->text () ;
-    int appreciation=ui->appreciation->text().toInt ();
-    int id_coach=ui->id_coach->text().toInt ();
-    int id_cheval=ui->id_cheval->text().toInt ();
-    int id_evenement=ui->id_evenement->text().toInt ();
+{int id_cavalier=ui->ID_CAVALIER->text().toInt ();
+    int id_planning=ui->ID_PLANNING->text().toInt ();
+    QString horaire=ui->HORAIRE->text () ;
+    int appreciation=ui->APPRECIATION->text().toInt ();
+    int id_coach=ui->ID_COACH->text().toInt ();
+    int id_cheval=ui->ID_CHEVAL->text().toInt ();
+    int id_evenement=ui->ID_EVENEMENT->text().toInt ();
 
  planning_cavalier p(id_cavalier,id_planning,horaire,appreciation,id_coach,id_cheval ,id_evenement);
 
