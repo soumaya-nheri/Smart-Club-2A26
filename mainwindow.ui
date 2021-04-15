@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>883</width>
-    <height>661</height>
+    <width>1324</width>
+    <height>702</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
      <rect>
       <x>20</x>
       <y>0</y>
-      <width>751</width>
+      <width>1271</width>
       <height>631</height>
      </rect>
     </property>
@@ -65,7 +65,7 @@ QTabBar::tab:!selected {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -76,12 +76,12 @@ QTabBar::tab:!selected {
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>751</width>
+        <width>1261</width>
         <height>621</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
@@ -684,50 +684,13 @@ QPushButton:default {
        <attribute name="title">
         <string>Afficher </string>
        </attribute>
-       <widget class="QTableView" name="tableView_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>721</width>
-          <height>441</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QTableView {
-    selection-background-color: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,
-                                stop: 0 #FF92BB, stop: 1 white);
-}
-</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_recherche">
-        <property name="geometry">
-         <rect>
-          <x>110</x>
-          <y>481</y>
-          <width>331</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    border: 2px solid gray;
-    border-radius: 10px;
-    padding: 0 8px;
-    background: grey;
-    selection-background-color: darkgray;
-}
-</string>
-        </property>
-       </widget>
        <widget class="QGroupBox" name="groupBox_7">
         <property name="geometry">
          <rect>
-          <x>-10</x>
+          <x>10</x>
           <y>0</y>
-          <width>751</width>
-          <height>541</height>
+          <width>1251</width>
+          <height>571</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -755,8 +718,8 @@ QGroupBox::title {
         <widget class="QPushButton" name="QUITTER_2">
          <property name="geometry">
           <rect>
-           <x>650</x>
-           <y>470</y>
+           <x>1150</x>
+           <y>530</y>
            <width>93</width>
            <height>28</height>
           </rect>
@@ -790,9 +753,9 @@ QPushButton:default {
         <widget class="QPushButton" name="afficher_cheval">
          <property name="geometry">
           <rect>
-           <x>650</x>
-           <y>510</y>
-           <width>93</width>
+           <x>470</x>
+           <y>20</y>
+           <width>301</width>
            <height>28</height>
           </rect>
          </property>
@@ -825,8 +788,8 @@ QPushButton:default {
         <widget class="QPushButton" name="recherche_chev">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>490</y>
+           <x>360</x>
+           <y>70</y>
            <width>93</width>
            <height>28</height>
           </rect>
@@ -857,17 +820,19 @@ QPushButton:default {
           <string>Recherche</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="PUSH_BUTTON_TRI_DATE_NAISS">
          <property name="geometry">
           <rect>
-           <x>540</x>
-           <y>470</y>
-           <width>93</width>
+           <x>960</x>
+           <y>190</y>
+           <width>221</width>
            <height>28</height>
           </rect>
          </property>
          <property name="styleSheet">
           <string notr="true">QPushButton {
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+	font: 6pt &quot;MS Shell Dlg 2&quot;;
     border: 2px solid #8f8f91;
     border-radius: 6px;
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
@@ -889,13 +854,122 @@ QPushButton:default {
 }</string>
          </property>
          <property name="text">
-          <string>TRIER</string>
+          <string>TRIER LES DATE_DE_NAISS</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_recherche">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>60</y>
+           <width>331</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: grey;
+    selection-background-color: darkgray;
+}
+</string>
+         </property>
+        </widget>
+        <widget class="QTableView" name="tableView_2">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>120</y>
+           <width>871</width>
+           <height>441</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QTableView {
+    selection-background-color: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,
+                                stop: 0 #FF92BB, stop: 1 white);
+}
+</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_TRI_NUM_BOX">
+         <property name="geometry">
+          <rect>
+           <x>960</x>
+           <y>260</y>
+           <width>221</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	font: 11pt &quot;MS Shell Dlg 2&quot;;
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+	font: 6pt &quot;MS Shell Dlg 2&quot;;
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}
+</string>
+         </property>
+         <property name="text">
+          <string>TRIER LES  NUM DE BOX</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_TRI_NOM">
+         <property name="geometry">
+          <rect>
+           <x>960</x>
+           <y>330</y>
+           <width>221</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	font: 6pt &quot;MS Shell Dlg 2&quot;;
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+    min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+         </property>
+         <property name="text">
+          <string>TRIER LES NOMS</string>
          </property>
         </widget>
        </widget>
-       <zorder>groupBox_7</zorder>
-       <zorder>tableView_2</zorder>
-       <zorder>lineEdit_recherche</zorder>
       </widget>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -2079,7 +2153,7 @@ QPushButton:default {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>883</width>
+     <width>1324</width>
      <height>26</height>
     </rect>
    </property>
