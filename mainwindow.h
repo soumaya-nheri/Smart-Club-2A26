@@ -105,6 +105,12 @@ private slots:
 
     void on_comboBox_ID_cheval_activated(const QString &arg1);
 
+    void on_pushButton_TRI_NUM_BOX_clicked();
+
+    void on_pushButton_TRI_NOM_clicked();
+
+    void on_PUSH_BUTTON_TRI_DATE_NAISS_clicked();
+
 private:
     Ui::MainWindow *ui;
     planningCheval tmp;

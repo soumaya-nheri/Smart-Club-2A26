@@ -646,8 +646,6 @@ void MainWindow::on_pushButton_clicked()//tri
 {
      cheval c;
      ui->tableView_2->setModel(c.trier());
-     ui->tableView_2->setModel(c.trie());
-     ui->tableView_2->setModel(c.trie2());
 
 }
 
@@ -675,4 +673,22 @@ void MainWindow::on_comboBox_ID_cheval_activated(const QString &arg1)
 
         }
     }
+}
+
+void MainWindow::on_pushButton_TRI_NUM_BOX_clicked()
+{
+    cheval c;
+    ui->tableView_2->setModel(c.trie());
+}
+
+void MainWindow::on_pushButton_TRI_NOM_clicked()
+{
+    cheval c;
+    ui->tableView_2->setModel(c.trie2());
+}
+
+void MainWindow::on_PUSH_BUTTON_TRI_DATE_NAISS_clicked()
+{
+    cheval c;
+    ui->tableView_2->setModel(c.trier());
 }
