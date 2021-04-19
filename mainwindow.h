@@ -109,6 +109,8 @@ private slots:
 
     void on_pushButton_TRI_NOM_clicked();
 
+    void on_PUSH_BUTTON_TRI_DATE_NAISS_clicked();
+
 private:
     Ui::MainWindow *ui;
     planningCheval tmp;

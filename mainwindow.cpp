@@ -686,3 +686,9 @@ void MainWindow::on_pushButton_TRI_NOM_clicked()
     cheval c;
     ui->tableView_2->setModel(c.trie2());
 }
+
+void MainWindow::on_PUSH_BUTTON_TRI_DATE_NAISS_clicked()
+{
+    cheval c;
+    ui->tableView_2->setModel(c.trier());
+}
