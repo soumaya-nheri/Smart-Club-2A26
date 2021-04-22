@@ -40,6 +40,30 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     MainWindow::makePlot();
+    ui->setupUi(this);
+
+    // arduino
+    int ret=A.connect_arduino();
+    switch(ret){
+        case(0):qDebug()<< "arduino is availble and connected to :"<< A.getarduino_port_name();
+            break;
+        case(1):qDebug()<< "arduino is availble but not connected to :"<< A.getarduino_port_name();
+            break;
+        case(-1):qDebug()<< "arduino is not availble";
+    }
+    QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
+
+    //fin arduino
+
+
+
+
+
+
+
+
+
+
   /*  ui->Id_cheval->setValidator(new QIntValidator(0,9999999,this));
     ui->ID3->setValidator(new QIntValidator(0,9999999,this));
     ui->poidsChev->setValidator(new QIntValidator(0,9999999,this));
@@ -56,7 +80,7 @@ MainWindow::MainWindow(QWidget *parent)
 */
     ui->tab_planning->setModel(tmp.afficher());//refresh
     ui->tableView_2->setModel(temp.afficher());//refresh
-    ui->comboBox_ID_cheval->setModel(temp.afficher());
+    //ui->comboBox_ID_cheval->setModel(temp.afficher());
 
 }
 
@@ -347,7 +371,7 @@ void MainWindow::on_pushButton_Quitter_clicked()
 
 //*******************************************************************************************************************************
 //cheval
-void MainWindow::on_ajouter_cheval_clicked()
+void MainWindow::on_ajout_cheval_clicked()
 {
     int Id_cheval=ui->idChev->text().toInt ();
     QString Nom=ui->nomChev->text() ;
@@ -380,7 +404,7 @@ void MainWindow::on_ajouter_cheval_clicked()
                     msgBox.setText("cheval non ajouté ");
                 }
 }
-void MainWindow::on_afficher_cheval_clicked()
+void MainWindow::on_afficher_chev_clicked()
 {
     cheval c;
     ui->tableView_2->setModel(c.afficher()) ;
@@ -392,22 +416,21 @@ void MainWindow::on_afficher_cheval_clicked()
 void MainWindow::on_modifier_cheval_clicked()
 {
 
-    int Id= ui->comboBox_ID_cheval->currentText().toInt();
-    int numB= ui->numbox_2->text().toInt();
-    bool test=temp.modifier(Id,numB);
+    int Id_cheval= ui->IdCheval_3->text().toInt();
+    int num_box=ui->numbox_2->text().toInt();
+
+    bool test=temp.modifier(Id_cheval,num_box);
+    //N.notifications_modifierarchives();
+
     if (test)
-    {
-        ui->tableView_2->setModel(temp.afficher());//refresh
-        QMessageBox msgBox ;
-        QMessageBox::information(this,"information","cheval modifié");
-    }
-    else
-    {
-        QMessageBox::critical(nullptr, QObject::tr("modifier un cheval"),
-                              QObject::tr("Erreur !.\n"
-                                          "Click Cancel to exit."), QMessageBox::Cancel);
+    {ui->tableView_2->setModel(temp.afficher());//refresh
+        QMessageBox::information(this, "success ", "modifier un cheval");
 
     }
+    else
+        QMessageBox::critical(nullptr, QObject::tr("Modifier un cheval"),
+                              QObject::tr("Erreur !.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
 }
 
 void MainWindow::on_supprimer_cheval_clicked()
@@ -659,7 +682,7 @@ void MainWindow::on_pushButton_2_clicked()//tri planning
 
 
 
-void MainWindow::on_comboBox_ID_cheval_activated(const QString &arg1)
+/*void MainWindow::on_comboBox_ID_cheval_activated(const QString &arg1)
 {
     QString ID=ui->comboBox_ID_cheval->currentText();
     QSqlQuery queryy ;
@@ -673,7 +696,7 @@ void MainWindow::on_comboBox_ID_cheval_activated(const QString &arg1)
 
         }
     }
-}
+}*/
 
 void MainWindow::on_pushButton_TRI_NUM_BOX_clicked()
 {
@@ -692,3 +715,9 @@ void MainWindow::on_PUSH_BUTTON_TRI_DATE_NAISS_clicked()
     cheval c;
     ui->tableView_2->setModel(c.trier());
 }
+
+
+
+
+
+

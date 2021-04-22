@@ -6,6 +6,8 @@
 
 QT       += core gui sql
 CONFIG += console
+QT+=serialport
+QT += core gui charts
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Atelier_Connexion
@@ -25,6 +27,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    arduino.cpp \
     cheval.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -34,6 +37,7 @@ SOURCES += \
     qcustomplot.cpp
 
 HEADERS += \
+    arduino.h \
     cheval.h \
         mainwindow.h \
     connection.h \

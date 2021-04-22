@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 #include "planningcheval.h"
 #include "cheval.h"
+#include "arduino.h"
 #include <QMainWindow>
 //#include <QtCharts>
 
@@ -43,7 +44,7 @@ private slots:
 
     void on_pushButton_Quitter_clicked();
 
-   // void on_ajouter_cheval_clicked();
+    //void on_ajouter_cheval_clicked();
 
     void on_QUITTER_1_clicked();
 
@@ -53,7 +54,7 @@ private slots:
 
     void on_QUITTER_4_clicked();
 
-    //void on_afficher_cheval_clicked();
+   // void on_afficher_cheval_clicked();
 
     void on_modifier_cheval_clicked();
 
@@ -79,7 +80,7 @@ private slots:
 
     void on_afficher_chev_currentChanged(int index);
 
-    void on_ajouter_cheval_clicked();
+    //void on_ajouter_cheval_clicked();
 
     void on_afficher_plann_currentChanged(int index);
 
@@ -93,7 +94,7 @@ private slots:
 
     void on_statistique_plann_clicked();
 
-    void on_afficher_cheval_clicked();
+    //void on_afficher_cheval_clicked();
 
     void on_imprimer_planning_clicked();
 
@@ -111,10 +112,20 @@ private slots:
 
     void on_PUSH_BUTTON_TRI_DATE_NAISS_clicked();
 
+    void on_afficher_cheval_clicked();
+
+    void on_afficher_chev_clicked();
+
+    void on_ajouter_cheval_clicked();
+
+    void on_ajout_cheval_clicked();
+
 private:
     Ui::MainWindow *ui;
     planningCheval tmp;
     cheval temp;
+    QByteArray data;
+    arduino A;
 
     void makePlot();
 };

@@ -65,7 +65,7 @@ QTabBar::tab:!selected {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -81,7 +81,7 @@ QTabBar::tab:!selected {
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
@@ -421,7 +421,7 @@ QGroupBox::title {
           </property>
          </widget>
         </widget>
-        <widget class="QPushButton" name="ajouter_cheval">
+        <widget class="QPushButton" name="ajout_cheval">
          <property name="geometry">
           <rect>
            <x>1130</x>
@@ -661,7 +661,7 @@ QPushButton:default {
         <zorder>label_12</zorder>
         <zorder>label_13</zorder>
         <zorder>label_14</zorder>
-        <zorder>ajouter_cheval</zorder>
+        <zorder>ajout_cheval</zorder>
         <zorder>groupBox_3</zorder>
         <zorder>idChev</zorder>
         <zorder>nomChev</zorder>
@@ -750,7 +750,7 @@ QPushButton:default {
           <string>QUITTER</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="afficher_cheval">
+        <widget class="QPushButton" name="afficher_chev">
          <property name="geometry">
           <rect>
            <x>470</x>
@@ -1144,18 +1144,17 @@ QPushButton:default {
           <string>Modifier les informations </string>
          </property>
         </widget>
-        <widget class="QComboBox" name="comboBox_ID_cheval">
+        <widget class="QLineEdit" name="IdCheval_3">
          <property name="geometry">
           <rect>
-           <x>320</x>
-           <y>161</y>
-           <width>121</width>
+           <x>330</x>
+           <y>170</y>
+           <width>111</width>
            <height>41</height>
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">QComboBox
- {
+          <string notr="true">QLineEdit {
     border: 2px solid gray;
     border-radius: 10px;
     padding: 0 8px;
