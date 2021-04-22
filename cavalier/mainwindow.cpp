@@ -528,7 +528,7 @@ else
 
 void MainWindow::on_envoyermail_clicked()
 {
-    Smtp* smtp = new Smtp("mariem.aljene@gmail.com","zainebTriki","smtp.gmail.com",465);
+    Smtp* smtp = new Smtp("mariem.aljene@gmail.com","mariemaljene","smtp.gmail.com",465);
     connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
 
     smtp->sendMail("mariem.aljene@gmail.com",ui->mail_2->text(),ui->objet_mail->text(),ui->text_mail->toPlainText());
