@@ -15,6 +15,7 @@
 #include <QUrl>
 #include <QApplication>
 #include <QStackedWidget>
+#include "arduino.h"
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +30,8 @@ public:
     ~MainWindow();
 
 private slots:
+
+
     void on_ajouter_clicked();
 
    // void on_pushButton_clicked();
@@ -107,12 +110,15 @@ private slots:
 
     void on_tri_planning_cavalier_clicked();
 
+    void on_statistiques_currentChanged(int index);
+
 private:
     Ui::MainWindow *ui;
 // Cavalier C  ;
    //planning_cavalier p ;
     QPropertyAnimation *animation ;
-
+    QByteArray data;
+    arduino A;
 
     void makePlot();
 };

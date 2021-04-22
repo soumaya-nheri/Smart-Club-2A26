@@ -20,7 +20,7 @@
 
 #include <QMessageBox>
 
-
+#include<smtp.h>
 
 #include <QPainter>
 #include <QPdfWriter>
@@ -61,6 +61,21 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     MainWindow::makePlot();
+    // arduino
+    int ret=A.connect_arduino();
+    switch(ret){
+        case(0):qDebug()<< "arduino is availble and connected to :"<< A.getarduino_port_name();
+            break;
+        case(1):qDebug()<< "arduino is availble but not connected to :"<< A.getarduino_port_name();
+            break;
+        case(-1):qDebug()<< "arduino is not availble";
+    }
+    QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
+
+    //fin arduino
+
+
+
     animation=new QPropertyAnimation(ui->ajouter,"geomerty");
     animation->setDuration(10000);
     animation->setStartValue(ui->ajouter->geometry());
@@ -513,8 +528,10 @@ else
 
 void MainWindow::on_envoyermail_clicked()
 {
-   // smtp* smtp = new smtp("mariem.aljene0@gmail.com","zainebtriki ","smtp.gmail.com",465);
-    //connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+    Smtp* smtp = new Smtp("mariem.aljene@gmail.com","zainebTriki","smtp.gmail.com",465);
+    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+    smtp->sendMail("mariem.aljene@gmail.com",ui->mail_2->text(),ui->objet_mail->text(),ui->text_mail->toPlainText());
 }
 
 void MainWindow::on_imprimer_planning_clicked()
@@ -718,3 +735,4 @@ void MainWindow::on_tri_planning_cavalier_clicked()
     planning_cavalier p;
     ui->afficher_planning->setModel(p.trier());
 }
+
