@@ -24,12 +24,8 @@ public:
     bool ajouter();
     QSqlQueryModel * afficher();
     bool supprimer(int);
-    bool modifier(int , int );
-    QSqlQueryModel * rechercher(QString);
-    QSqlQueryModel * recherche(QString);
-    QSqlQueryModel * trier();
-    QSqlQueryModel * trie();
-    QSqlQueryModel * trie2();
+    bool modifier(int,QString,QString,QString,QString,QString,int,QString,QString,int,QString);
+
 private:
     QString nom,genre,date_de_naiss,vaccins,date_limite_vacc,race,nationnalite,type_act;
     int Id_cheval,poids,num_box;

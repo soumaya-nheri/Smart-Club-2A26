@@ -1,8 +1,8 @@
 #ifndef PLANNINGCHEVAL_H
 #define PLANNINGCHEVAL_H
 #include <QString>
-#include <QSqlQuery>
-#include <QSqlQueryModel>
+//#include <QSqlQuery>
+//#include <QSqlQueryModel>
 
 class planningCheval
 {public:
@@ -19,10 +19,8 @@ class planningCheval
     bool ajouter();
     QSqlQueryModel * afficher();
     bool supprimer(int);
-    bool modifier(int,QString);
-     QSqlQueryModel * tri();
-     QSqlQueryModel *trie();
-     QSqlQueryModel *tri3();
+    bool modifier(int,QString,QString,QString,int);
+
 
 
 private:
