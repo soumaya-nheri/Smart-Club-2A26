@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>principal</class>
+ <widget class="QDialog" name="principal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>844</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>-130</y>
+     <width>761</width>
+     <height>731</height>
+    </rect>
+   </property>
+   <widget class="QPushButton" name="equipement">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>230</y>
+      <width>231</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">	border-width: 1px; border-radius: 4px;
+	border-color: rgb(58, 58, 58);
+	border-style: inset;
+	padding: 0 8px;
+
+
+	selection-color: rgb(60, 63, 65);</string>
+    </property>
+    <property name="text">
+     <string>equipements</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Pictures/Capture d’écran 2021-04-29 015550.png</normaloff>../../../Pictures/Capture d’écran 2021-04-29 015550.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>100</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cheval">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>10</y>
+      <width>231</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">	border-width: 1px; border-radius: 4px;
+	border-color: rgb(58, 58, 58);
+	border-style: inset;
+	padding: 0 8px;
+
+
+	selection-color: rgb(60, 63, 65);</string>
+    </property>
+    <property name="text">
+     <string>cheval </string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Downloads/22227horse_98801.png</normaloff>../../../Downloads/22227horse_98801.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>100</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="staff">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>10</y>
+      <width>231</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">	border-width: 1px; border-radius: 4px;
+	border-color: rgb(58, 58, 58);
+	border-style: inset;
+	padding: 0 8px;
+
+
+	selection-color: rgb(60, 63, 65);</string>
+    </property>
+    <property name="text">
+     <string>staff</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Pictures/Capture d’écran 2021-04-29 015402.png</normaloff>../../../Pictures/Capture d’écran 2021-04-29 015402.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>100</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="evenement">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>420</y>
+      <width>231</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">	border-width: 1px; border-radius: 4px;
+	border-color: rgb(58, 58, 58);
+	border-style: inset;
+	padding: 0 8px;
+
+
+	selection-color: rgb(60, 63, 65);</string>
+    </property>
+    <property name="text">
+     <string>evenements</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Pictures/Capture d’écran 2021-04-29 020128.png</normaloff>../../../Pictures/Capture d’écran 2021-04-29 020128.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>100</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cavalier">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>230</y>
+      <width>231</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">	border-width: 1px; border-radius: 4px;
+	border-color: rgb(58, 58, 58);
+	border-style: inset;
+	padding: 0 8px;
+
+
+	selection-color: rgb(60, 63, 65);</string>
+    </property>
+    <property name="text">
+     <string>cavalier</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Pictures/Capture d’écran 2021-04-29 015149.png</normaloff>../../../Pictures/Capture d’écran 2021-04-29 015149.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>100</height>
+     </size>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
