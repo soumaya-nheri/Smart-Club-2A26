@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/">
+        <file>lieu.jpg</file>
+        <file>pdf.png</file>
+        <file>planning.png</file>
+        <file>recherche.png</file>
+        <file>stat.png</file>
+        <file>tri.png</file>
+        <file>delete.png</file>
+        <file>modifier.png</file>
+        <file>verifier.png</file>
+        <file>quitter.png</file>
+        <file>cheval.png</file>
+        <file>liste.png</file>
+        <file>chev.png</file>
+        <file>ASMT.png</file>
+        <file>REEMZ.png</file>
+        <file>mute.png</file>
+        <file>play.png</file>
+        <file>reglage.png</file>
+        <file>back.png</file>
+        <file>settings.png</file>
+        <file>arduino.png</file>
+        <file>plein.png</file>
+        <file>vide.png</file>
+        <file>dish.png</file>
+    </qresource>
+</RCC>
