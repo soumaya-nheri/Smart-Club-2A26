@@ -31,7 +31,9 @@ SOURCES += \
     mailing/smtpclient.cpp \
     main.cpp \
     mainwindow.cpp \
-    staff.cpp
+    planning.cpp \
+    staff.cpp \
+    todolist.cpp
 
 HEADERS += \
     connection.h \
@@ -50,7 +52,9 @@ HEADERS += \
     mailing/smtpclient.h \
     mailing/smtpexports.h \
     mainwindow.h \
-    staff.h
+    planning.h \
+    staff.h \
+    todolist.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -59,3 +63,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 FORMS += \
     mainwindow.ui
+
+RESOURCES += \
+    resources.qrc
