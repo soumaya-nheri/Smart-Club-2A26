@@ -2,18 +2,15 @@
 #include <QDebug>
 #include "connection.h"
 #include <QSqlQuery>
-
-
+#include <QDateEdit>
 Equipement::Equipement()
 {   id=0;
     quantite=0;
-    date=0;
-    deadline=0;
     prix=0;
     type="";
     etat="";
 }
-Equipement::Equipement(int id,int prix,int quantite, int date,int deadline , QString etat,QString type )
+Equipement::Equipement(int id,int prix,int quantite, QDate date,QDate deadline , QString etat , QString type )
 {
     this->id=id;
     this->quantite=quantite;
@@ -26,8 +23,8 @@ Equipement::Equipement(int id,int prix,int quantite, int date,int deadline , QSt
 int Equipement::getid(){return id;}
 int Equipement::getquantite(){return  quantite;}
 QString Equipement::gettype(){return  type;}
-int Equipement::getdate(){return  date;}
-int Equipement::getdeadline(){return deadline;}
+QDate Equipement::getdate(){return  date;}
+QDate Equipement::getdeadline(){return deadline;}
 QString Equipement::getetat(){return etat;}
 int Equipement::getprix(){return prix;}
 
@@ -56,12 +53,12 @@ QSqlQueryModel * Equipement::afficher()
 {QSqlQueryModel * model= new QSqlQueryModel();
 model->setQuery("select * from Equipement");
 model->setHeaderData(0, Qt::Horizontal, QObject::tr("id"));
-model->setHeaderData(0, Qt::Horizontal, QObject::tr("prix "));
-model->setHeaderData(0, Qt::Horizontal, QObject::tr("quantite"));
-model->setHeaderData(0, Qt::Horizontal, QObject::tr("date"));
-model->setHeaderData(0, Qt::Horizontal, QObject::tr("deadline"));
-model->setHeaderData(0,Qt::Horizontal, QObject::tr("etat"));
-model->setHeaderData(0,Qt::Horizontal, QObject::tr("type"));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("type "));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("quantite"));
+model->setHeaderData(3, Qt::Horizontal, QObject::tr("date_arrivee"));
+model->setHeaderData(4, Qt::Horizontal, QObject::tr("deadline"));
+model->setHeaderData(5,Qt::Horizontal, QObject::tr("etat"));
+model->setHeaderData(6,Qt::Horizontal, QObject::tr("prix"));
 
     return model;
 }
@@ -88,7 +85,7 @@ QSqlQueryModel * Equipement::rechercher(int id)
 
         return model;
    }
-bool Equipement ::modifier(int id,int prix,int quantite, int date,int deadline , QString etat,QString type)
+bool Equipement ::modifier(int id,int prix,int quantite, QDate date,QDate deadline , QString etat,QString type)
 {
     QSqlQuery query;
     query.prepare("UPDATE Equipement SET id_produit=:id, prix = :prix,quantite = :quantite,date_arrivee=:date,deadline=:deadline,etat= :etat,type=:type  WHERE id_produit= :id ");
@@ -100,8 +97,63 @@ bool Equipement ::modifier(int id,int prix,int quantite, int date,int deadline ,
     query.bindValue(":etat",etat);
     query.bindValue(":type",type);
 
-
-
     return    query.exec();
 }
+equipementh::equipementh()
+{
+nom="";
+datee="";
+fn="";
+}
+equipementh::equipementh(QString nom,QString datee,QString fn)
+{
+    this->nom=nom;
+    this->datee=datee;
+    this->fn=fn ;
+}
+QString equipementh::get_datee(){return  datee;}
+QString equipementh::get_fn(){return  fn;}
+QString equipementh::get_nom(){return  nom;}
+bool equipementh::ajoutehis()
+{
+    QSqlQuery query;
+    query.prepare("INSERT INTO historique (NOM, DATEE, FN) "
+                  "VALUES (:nom, :datee, :fn)");
+    query.bindValue(":nom", nom);
+    query.bindValue(":datee", datee);
+    query.bindValue(":fn", fn);
+    return    query.exec();
+}
+bool equipementh::modifierhis()
+{
+    QSqlQuery query;
+    query.prepare("UPDATE historique SET datee='"+datee+"',fn='"+fn+"' where nom='"+nom+"' ");
+    query.bindValue(":nom",nom);
+    query.bindValue(":datee", datee);
+    query.bindValue(":fn", fn);
+    return    query.exec();
+}
+
+QSqlQueryModel * equipementh::afficherhis()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("select * from historique");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("type"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("date "));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("fonction "));
+        return model;
+
+}
+QSqlQueryModel * Equipement::afficher_tri()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+model->setQuery("select * from equipement order by ID_PRODUIT desc ");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("id"));
+
+    return model;
+}
+
+
+
 

@@ -1,344 +1,148 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "staff.h"
-#include "planning.h"
-#include  <QMessageBox>
-#include   <QIntValidator>
-#include <QPdfWriter>
-#include <QPainter>
-#include <QDesktopServices>
-#include  <QUrl>
-#include  <QPrinter>
-#include  <QFileDialog>
-#include <QTextDocument>
-#include "mailing/SmtpMime"
-#include  <QDialog>
-
-#include <iostream>
-#include <QApplication>
-#include <QMainWindow>
-#include <QtCharts/QChartView>
-#include <QtCharts/QBarSeries>
-#include <QtCharts/QBarSet>
-#include <QtCharts/QLegend>
-#include <QtCharts/QBarCategoryAxis>
-#include <QtCharts/QHorizontalStackedBarSeries>
-#include <QtCharts/QLineSeries>
-#include <QtCharts/QCategoryAxis>
-#include <QtCharts/QPieSeries>
-#include <QtCharts/QPieSlice>
-#include <QPainter>
-#include <QSqlQuery>
-
-
-
-
-
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+#include "equipement.h"
+#include "fournisseur.h"
+#include <QMessageBox>
+#include <QIntValidator>
+#include<QPdfWriter>
+#include<QPainter>
+#include<QDesktopServices>
+#include<QUrl>
+#include <QPrinter>
+#include <QFileDialog>
+#include<QTextDocument>
+#include <QDate>
+#include <QDateEdit>
+#include <QSystemTrayIcon>
+#include<QPainter>
+#include <QMediaPlayer>
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
 {
-
     ui->setupUi(this);
-  ui->tabstaff->setModel(tmpstaff.afficher());
-   // ui->lineedit_id->setValidator(new QIntValidator(100, 999, this));
-   ui->tableView2->setModel(tmpplanning.afficher());
+    ui->tabfournisseur->setModel(f.afficher());
+    ui->tabequipement->setModel(e.afficher());
+}
+bool MainWindow::verifID()
+{
+    if (ui->lineedit_id->text().contains(QRegExp("[^0-9 ]") ) || ui->lineedit_id->text().isEmpty())
+    {
+        ui->lineedit_id->clear();
+
+        ui->lineedit_id->setPlaceholderText("contient que des chiffres") ;
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 
 }
+bool MainWindow::verifTYPE()
+{
+    if (ui->lineEdit_type->text().contains(QRegExp("[^a-zA-Z ]") ) || ui->lineEdit_type->text().isEmpty())
+    {
+        ui->lineEdit_type->clear();
+        ui->lineEdit_type->setPlaceholderText("contient que des caracteres") ;
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 
+}
+bool MainWindow::verifQuantite()
+{
+    if (ui->lineEdit_quantite->text().contains(QRegExp("[^0-9 ]") ) || ui->lineEdit_quantite->text().isEmpty())
+    {
+        ui->lineEdit_quantite->clear();
+
+        ui->lineEdit_quantite->setPlaceholderText("contient que des chiffres") ;
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+
+}
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 void MainWindow::on_pb_ajouter_clicked()
 {
-    int id = ui->lineEdit_id->text().toInt();
-    QString nom= ui->lineEdit_nom->text();
-    QString prenom= ui->lineEdit_prenom->text();
-    QString type= ui->comboBox_type->currentText();
-    int numero = ui->lineEdit_numero->text().toInt();
-    QString adresse= ui->lineEdit_adresse->text();
-    int salaire= ui->lineEdit_salaire->text().toInt();
-    QString date_naiss = ui->lineEdit_date->text();
-    QString email = ui->lineEdit_email->text();
-    QString diplome = ui->lineEdit_diplome->text();
-    QString activite = ui->lineEdit_activite->text();
+    int id = ui->lineedit_id->text().toInt();
+    QString type= ui->lineEdit_type->text();
+    int quantite= ui->lineEdit_quantite->text().toInt();
+    QDate date= ui->dateEdit_2->date();
+    QString etat= ui->lineEdit_etat->text();
+    QDate deadline= ui->dateEdit->date();
+    int prix= ui->lineEdit_prix->text().toInt();
+
+    srand (time(NULL));
+
+    QDate d = QDate::currentDate() ;
+    QString datee =d.toString("dd / MM / yyyy ") ;
+    QString fn="ajouter" ;
+   QString nom1 = ui->lineEdit_type->text();
+
+    equipementh pp(nom1,datee,fn) ;
+    bool test1=pp.ajoutehis() ;
 
 
 
-  Staff e(id,nom,prenom,date_naiss,adresse,email,type,activite,diplome,numero,salaire);
-  bool test=e.ajouter();
-  if(test)
-{
-
-     ui->tabstaff->setModel(tmpstaff.afficher());
-QMessageBox::information(nullptr, QObject::tr("Ajouter un projet"),
-                  QObject::tr("Projet ajouté.\n"
-                              "Click Cancel to exit."), QMessageBox::Cancel);
-
-}
-  else
-      QMessageBox::critical(nullptr, QObject::tr("Ajouter un Projet"),
-                  QObject::tr("Erreur !.\n"
-                              "Click Cancel to exit."), QMessageBox::Cancel);
-}
-
-void MainWindow::on_pushButton_2_clicked()
-{
-    int id = ui->lineEdit_id->text().toInt();
-    QString nom= ui->lineEdit_nom->text();
-    QString prenom= ui->lineEdit_prenom->text();
-    QString type= ui->comboBox_type->currentText();
-    int numero = ui->lineEdit_numero->text().toInt();
-    QString adresse= ui->lineEdit_adresse->text();
-    int salaire= ui->lineEdit_salaire->text().toInt();
-    QString date_naiss = ui->lineEdit_date->text();
-    QString email = ui->lineEdit_email->text();
-    QString diplome = ui->lineEdit_diplome->text();
-    QString activite = ui->lineEdit_activite->text();
-
-
-
-        Staff f;
-        bool test=f.modifier(id,nom,prenom,date_naiss,adresse,email,type,activite,diplome,numero,salaire);
-
-        if(test)
-        {
-            ui->tabstaff->setModel(tmpstaff.afficher());
-            QMessageBox::information(nullptr, QObject::tr("modifie une fonction"),
-                              QObject::tr("fonctin modifiée.\n"
-                                          "Click Cancel to exit."), QMessageBox::Cancel);
-        }
-        else
-            QMessageBox::critical(nullptr, QObject::tr("non modifie"),
-                        QObject::tr("Erreur !.\n"
-                                    "Click Cancel to exit."), QMessageBox::Cancel);
-}
-
-void MainWindow::on_pushButton_3_clicked()
-{
-    int id = ui->lineEdit_sup->text().toInt();
-    bool test=tmpstaff.supprimer(id);
+    Equipement e (id, prix,quantite, date,deadline ,etat,type);
+    if(verifID()&&verifTYPE()&&verifQuantite()) {
+        bool test=e.ajouter();
     if(test)
-    {ui->tabstaff->setModel(tmpstaff.afficher());//refresh
-        QMessageBox::information(nullptr, QObject::tr("Supprimer un Projet"),
-                    QObject::tr("Projet supprimé.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+    {
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+        notifyIcon->show();
+        notifyIcon->setIcon(QIcon("icone.png"));
+        notifyIcon->showMessage("gestion equipement ","equipement ajouter",QSystemTrayIcon::Information,15000);
+
+
+        QMediaPlayer * erreur = new QMediaPlayer ;
+        erreur->setMedia(QUrl("C:/Users/Eya/Desktop/gestion_equipement/sounds/projetajoute.mp3")) ;
+            erreur->setVolume(100) ;
+            erreur->play() ;
+    ui->tabequipement->setModel(e.afficher());
+
+    QMessageBox::information(nullptr, QObject::tr("Ajout effectue"),
+    QObject::tr("OK.\n"
+    "Click Cancel to exit."), QMessageBox::Cancel);
 
     }
-    else
-        QMessageBox::critical(nullptr, QObject::tr("Supprimer un Projet"),
-                    QObject::tr("Erreur !.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
-}
-
-void MainWindow::on_pushButton_4_clicked()
-{
-    int id;
-
-        id=ui->lineEdit_recherche->text().toInt();
-    bool test= true;
-    if(test==(true))
-    {
-      ui->tabstaff->setModel(tmpstaff.rechercher(id));
-}
-}
-
-void MainWindow::on_pushButton_6_clicked()
-{
-    QString str;
-    str.append("<html><head></head><body><center>"+QString("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;<font size=""10"" color =""red""> GESTION DE STAFF </font><br /> <br /> "));
-    str.append("<table border=1><tr>");
-    str.append("<td>"+QString("  ")+"&nbsp;&nbsp;<font color =""blue""  size=""10"">id</font>&nbsp;&nbsp;"+"</td>");
-    str.append("<td>"+QString("  ")+"&nbsp;&nbsp;<font color =""blue""  size=""10"">nom</font>&nbsp;&nbsp;"+"</td>");
-    str.append("<td>"+QString("  ")+"&nbsp;&nbsp;<font color =""blue""  size=""10"">Prenom</font>&nbsp;&nbsp;"+"</td>");
-    str.append("<td>"+QString("&nbsp;&nbsp;<font color =""blue""  size=""20"">adresse</font>&nbsp;&nbsp;")+"</td>");
-    str.append("<td>"+QString("&nbsp;&nbsp;<font color =""blue""  size=""10"">numero</font>&nbsp;&nbsp;")+"</td>");
-    str.append("<td>"+QString("&nbsp;&nbsp;<font color =""blue""  size=""10"">diplome</font>&nbsp;&nbsp;")+"</td>");
-    str.append("<td>"+QString("&nbsp;&nbsp;<font color =""blue""  size=""10"">salaire</font>&nbsp;&nbsp;")+"</td>");
-    str.append("<td>"+QString("&nbsp;&nbsp;<font color =""blue""  size=""10"">email</font>&nbsp;&nbsp;")+"</td>");
-    str.append("<td>"+QString("&nbsp;&nbsp;<font color =""blue""  size=""10"">activite</font>&nbsp;&nbsp;")+"</td>");
-    str.append("<td>"+QString("&nbsp;&nbsp;<font color =""blue""  size=""10"">type</font>&nbsp;&nbsp;")+"</td>");
-    QSqlQuery * query=new QSqlQuery();
-    query->exec("SELECT nom,prenom,adresse,numero FROM staff");
-    while(query->next())
-    {
-        str.append("<tr><td>");
-        str.append("&nbsp;&nbsp;<font color =""green"" size= ""10"">"+query->value(0).toString()+"&nbsp;&nbsp;");
-        str.append("</td><td>");
-        str.append("&nbsp;&nbsp;<font color =""green""  size=""10"">"+query->value(1).toString()+"&nbsp;&nbsp;");
-        str.append("</td><td>");
-        str.append("&nbsp;&nbsp;<font color =""green"" size=""10"">"+query->value(2).toString()+"&nbsp;&nbsp;");
-         str.append("</td><td>");
-        str.append("&nbsp;&nbsp;<font color =""green"" size= ""10"">"+query->value(3).toString()+"&nbsp;&nbsp;");
-        str.append("</td></tr>");
-        str.append("&nbsp;&nbsp;<font color =""green"" size= ""10"">"+query->value(4).toString()+"&nbsp;&nbsp;");
-        str.append("</td></tr>");
-        str.append("&nbsp;&nbsp;<font color =""green"" size= ""10"">"+query->value(5).toString()+"&nbsp;&nbsp;");
-        str.append("</td></tr>");
-        str.append("&nbsp;&nbsp;<font color =""green"" size= ""10"">"+query->value(6).toString()+"&nbsp;&nbsp;");
-        str.append("</td></tr>");
-        str.append("&nbsp;&nbsp;<font color =""green"" size= ""10"">"+query->value(7).toString()+"&nbsp;&nbsp;");
-        str.append("</td></tr>");
-        str.append("&nbsp;&nbsp;<font color =""green"" size= ""10"">"+query->value(8).toString()+"&nbsp;&nbsp;");
-        str.append("</td></tr>");
-        str.append("&nbsp;&nbsp;<font color =""green"" size= ""10"">"+query->value(9).toString()+"&nbsp;&nbsp;");
-        str.append("</td></tr>");
-
-}
-
-    str.append("</table></center><body></html>");
-
-    QPrinter printer;
-    printer.setOrientation(QPrinter::Portrait);
-    printer.setOutputFormat(QPrinter::PdfFormat);
-    printer.setPaperSize(QPrinter::A4);
-
-    QString path= QFileDialog::getSaveFileName(NULL,"imprimer","gestion des Staff","PDF(*.pdf");
-     if(path.isEmpty()) return;
-     printer.setOutputFileName(path);
-     QTextDocument doc;
-     doc.setHtml(str);
-     doc.print(&printer);
-}
-
-
-void MainWindow::on_pushButton_7_clicked()
-{
-    ui->tabstaff->setModel( tmpstaff.afficher_tri());
-    ui->tabstaff->setModel( tmpstaff.afficher_tri());
-}
-
-void MainWindow::on_pushButton_8_clicked()
-{
-    SmtpClient smtp("smtp.gmail.com", 465, SmtpClient::SslConnection);
-
-           smtp.setUser("eya.dhamna@esprit.tn");
-           smtp.setPassword("eya123");
-
-           MimeMessage message;
-
-           message.setSender(new EmailAddress("eya.dhamna@esprit.tn", "EYA"));
-           message.addRecipient(new EmailAddress(ui->lineEdit_email_2->text(), "EYA"));
-           message.setSubject("Service Client");
-
-           MimeText text;
-           QString text1 = ui->textEdit->toPlainText();
-           text.setText(text1);
-
-           message.addPart(&text);
-
-           smtp.connectToHost();
-
-           smtp.login();
-           smtp.sendMail(message);
-           QMessageBox::information(nullptr, QObject::tr("mail envoyer"),
-                       QObject::tr("mail envoyer.\n"
-                                   "Click Cancel to exit."), QMessageBox::Cancel);
-           smtp.quit();
-}
-int MainWindow::Statistique_partie2()
-{
-    QSqlQuery query;
-    int count=0 ;
-    QSqlQuery requete("select * from staff where salaire BETWEEN '0' AND '100'") ;
-    while(requete.next())
-    {
-            count++ ;
     }
-
-return count ;
-
-
-
-}
-int MainWindow::Statistique_partie3()
-{
-    QSqlQuery query;
-    int count=0 ;
-    QSqlQuery requete("select * from staff where salaire BETWEEN '200' AND '300'") ;
-    while(requete.next())
-    {
-            count++ ;
+    else{
+        QMediaPlayer * erreur = new QMediaPlayer ;
+       erreur->setMedia(QUrl("C:/Users/Eya/Desktop/gestion_equipement/sounds/erreur.mp3")) ;
+           erreur->setVolume(100) ;
+           erreur->play() ;
+    QMessageBox::critical(nullptr, QObject::tr("Ajout non effectue"),
+    QObject::tr("KO.\n"
+    "Click Cancel to exit."), QMessageBox::Cancel);
     }
-
-return count ;
-
-
-
 }
-int MainWindow::Statistique_partie4()
+void MainWindow::on_pushButton_5_clicked()
 {
-    QSqlQuery query;
-    int count=0 ;
-    QSqlQuery requete("select * from staff where salaire BETWEEN '300' AND '400'") ;
-    while(requete.next())
-    {
-            count++ ;
-    }
+    int id = ui->lineEdit_id2->text().toInt();
+    QString email= ui->lineEdit_email->text();
+    QString nom= ui->lineEdit_nom->text();
+    QString prenom= ui->lineEdit_pren->text();
+    int tel = ui->lineEdit_tele->text().toInt();
 
-return count ;
-}
-void MainWindow::paintEvent(QPaintEvent *)
-{
-
-    int b=Statistique_partie2();
-   // cout<<b<<endl ;
-    int c=Statistique_partie3();
-    //cout<<c<<endl ;
-    int d=Statistique_partie4();
-   // cout<<d<<endl ;
-
-        float s2= b*100 ;
-        float s3=c*100;
-        float nb = b+c+d ;
-        float q2 ;
-        q2 = s2/nb ;
-        float q3;
-        q3=s3/nb;
-        float y  ;
-        y = (q2*360)/100 ;
-        float m;
-        m= (q3*360)/100;
-        float z  ;
-        z=360-(y+m) ;
-    QPainter painter(this);
-    QRectF size=QRectF(10,10,this->width()-100,this->width()-100);
-
-    painter.setBrush(Qt::blue);
-    painter.drawPie(size,0,5*y);
-    ui->label_bleu->setText("0-100") ;
-    painter.setBrush(Qt::green);
-    painter.drawPie(size,5*y,5*m);
-    ui->label_vert->setText("101-200") ;
-    painter.setBrush(Qt::red);
-    painter.drawPie(size,5*(m+y),5*z);
-    ui->label_rouge->setText("201-300") ;
-
-}
-
-
-
-void MainWindow::on_ajouter2_clicked()
-{
-    int id_planning=ui->l1->text().toInt();
-    int nb_heures=ui->l2->text().toInt();
-        QString cours=ui->l3->text();
-        QString jours_feriers=ui->l4->text();
-
-
-    class planning P(id_planning, nb_heures, cours,jours_feriers);
-    bool test=P.ajouter();
-
+    fournisseur f(id,tel,email,nom,prenom);
+    bool test=f.ajouter();
     foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
     le->clear();
     }
     if(test)
     {
-        class planning P;
-   ui->tableView2->setModel(P.afficher());
-
+    ui->tabfournisseur->setModel(f.afficher());
     QMessageBox::information(nullptr, QObject::tr("Ajout effectue"),
     QObject::tr("OK.\n"
     "Click Cancel to exit."), QMessageBox::Cancel);
@@ -350,56 +154,282 @@ void MainWindow::on_ajouter2_clicked()
     "Click Cancel to exit."), QMessageBox::Cancel);
 }
 
-void MainWindow::on_supp_clicked()
+void MainWindow::on_pushButton10_clicked()
 {
-    int id_planning = ui->supp2->text().toInt();
-    class planning P;
-    bool test=P.supprimer(id_planning);
+    QDate d = QDate::currentDate() ;
+     QString datee =d.toString("dd / MM / yyyy ") ;
+     QString fn="modifier" ;
+
+       int id = ui->lineEdit_modid->text().toInt();
+       int quantite= ui->lineEdit_modquan->text().toInt();
+       QString type= ui->lineEdit_modtype->text();
+       QDate date= ui->dateEdit_2->date();
+       QDate deadline= ui->dateEdit->date();
+       QString etat= ui->lineEdit_modetat->text();
+       int prix= ui->lineEdit_modprix->text().toInt();
+
+       QString nom1 = ui->lineEdit_modtype->text();
+       equipementh pp(nom1,datee,fn) ;
+       bool test1=pp.modifierhis() ;
+       Equipement e;
+       bool test=e.modifier(id, prix,quantite, date,deadline ,etat,type);
+       foreach(QLineEdit* le, findChildren<QLineEdit*>())
+       {
+          le->clear();
+       }
+       if(test)
+       {
+           QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                   notifyIcon->show();
+                   notifyIcon->setIcon(QIcon("icone.png"));
+                   notifyIcon->showMessage("gestion equipement ","equipement modifié",QSystemTrayIcon::Information,15000);
+
+
+                   QMediaPlayer * erreur = new QMediaPlayer ;
+                   erreur->setMedia(QUrl("C:/Users/Eya/Desktop/gestion_equipement/sounds/projetmodif.mp3")) ;
+                       erreur->setVolume(100) ;
+                       erreur->play() ;
+           QMessageBox::information(nullptr, QObject::tr("Modification effectue"),
+                       QObject::tr("OK.\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
+           ui->tabequipement->setModel(e.afficher());
+
+      }
+       else {
+           QMediaPlayer * erreur = new QMediaPlayer ;
+          erreur->setMedia(QUrl("C:/Users/Eya/Desktop/gestion_equipement/sounds/erreur.mp3")) ;
+              erreur->setVolume(100) ;
+              erreur->play() ;
+           QMessageBox::critical(nullptr, QObject::tr("Modification non effectue"),
+                       QObject::tr("KO.\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
+       }
+}
+
+void MainWindow::on_pb_ajouter_2_clicked()
+{
+    int id;
+
+        id=ui->lineEdit_rech->text().toInt();
+    bool test= true;
+    if(test==(true))
+    {
+      ui->tabequipement->setModel(e.rechercher(id));
+}
+}
+
+void MainWindow::on_pb_supprimer_3_clicked()
+{
+    int id = ui->lineEdit_sup->text().toInt();
+
+    bool test=e.supprimer(id);
+    QDate d = QDate::currentDate() ;
+     QString datee =d.toString("dd / MM / yyyy ") ;
+     QString fn="supprimer" ;
+     QString nom1 = ui->lineEdit_modtype->text();
+      equipementh pp(nom1,datee,fn) ;
+     bool test1=pp.modifierhis() ;
     if(test)
-    {ui->tableView2->setModel(P.afficher());//refresh
-        QMessageBox::information(nullptr, QObject::tr("Supprimer un Projet"),
-                    QObject::tr("Projet supprimé.\n"
+    {
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                notifyIcon->show();
+                notifyIcon->setIcon(QIcon("icone.png"));
+                notifyIcon->showMessage("gestion equipement ","equipement supprimé",QSystemTrayIcon::Information,15000);
+
+
+                QMediaPlayer * erreur = new QMediaPlayer ;
+                erreur->setMedia(QUrl("C:/Users/Eya/Desktop/gestion_equipement/sounds/equipementsup.mp3")) ;
+                    erreur->setVolume(100) ;
+                    erreur->play() ;
+
+        ui->tabequipement->setModel(e.afficher());     //refresh
+        QMessageBox::information(nullptr, QObject::tr("Supprimer un equipement"),
+                    QObject::tr("Equipement supprimé.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 
     }
     else
-        QMessageBox::critical(nullptr, QObject::tr("Supprimer un Projet"),
+        QMessageBox::critical(nullptr, QObject::tr("Supprimer un equipement"),
                     QObject::tr("Erreur !.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 
 }
 
-void MainWindow::on_modifier_clicked()
+void MainWindow::on_pushButton_2_clicked()
 {
-    int id_planning = ui->l1->text().toInt();
-    int nb_heures= ui->l2->text().toInt();
-    QString cours= ui->l3->text();
-    QString jours_feriers= ui->l4->text();
-
-
-
-
-
-        planning P;
-        bool test=P.modifier(id_planning,nb_heures,cours,jours_feriers);
-
-        if(test)
-        {
-            ui->tableView2->setModel(P.afficher());
-            QMessageBox::information(nullptr, QObject::tr("modifie une fonction"),
-                              QObject::tr("fonctin modifiée.\n"
-                                          "Click Cancel to exit."), QMessageBox::Cancel);
-        }
-        else
-            QMessageBox::critical(nullptr, QObject::tr("non modifie"),
-                        QObject::tr("Erreur !.\n"
-                                    "Click Cancel to exit."), QMessageBox::Cancel);
-
+    QString str;
+    str.append("<html><head></head><body><center>"+QString("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;<font size=""10"" color =""red""> GESTION DES EQUIPEMENTS </font><br /> <br /> "));
+    str.append("<table border=1><tr>");
+    str.append("<td>"+QString("  ")+"&nbsp;&nbsp;<font color =""blue""  size=""10"">id</font>&nbsp;&nbsp;"+"</td>");
+    str.append("<td>"+QString("  ")+"&nbsp;&nbsp;<font color =""blue""  size=""10"">type</font>&nbsp;&nbsp;"+"</td>");
+    str.append("<td>"+QString("&nbsp;&nbsp;<font color =""blue""  size=""20"">quantite</font>&nbsp;&nbsp;")+"</td>");
+    str.append("<td>"+QString("&nbsp;&nbsp;<font color =""blue""  size=""10"">date</font>&nbsp;&nbsp;")+"</td>");
+    QSqlQuery * query=new QSqlQuery();
+    query->exec("SELECT id_produit,type,quantite,date_arrivee FROM equipement");
+    while(query->next())
+    {
+        str.append("<tr><td>");
+        str.append("&nbsp;&nbsp;<font color =""green"" size= ""10"">"+query->value(0).toString()+"&nbsp;&nbsp;");
+        str.append("</td><td>");
+        str.append("&nbsp;&nbsp;<font color =""green""  size=""10"">"+query->value(1).toString()+"&nbsp;&nbsp;");
+        str.append("</td><td>");
+        str.append("&nbsp;&nbsp;<font color =""green"" size=""10"">"+query->value(2).toString()+"&nbsp;&nbsp;");
+         str.append("</td><td>");
+        str.append("&nbsp;&nbsp;<font color =""green"" size= ""10"">"+query->value(3).toString()+"&nbsp;&nbsp;");
+        str.append("</td></tr>");
 
 }
 
-void MainWindow::on_pb_ajouter_2_clicked()
-{
-    app=new CToDoList();
-    app->show();
+    str.append("</table></center><body></html>");
+
+    QPrinter printer;
+    printer.setOrientation(QPrinter::Portrait);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setPaperSize(QPrinter::A4);
+
+    QString path= QFileDialog::getSaveFileName(NULL,"imprimer","gestion des equipements","PDF(*.pdf");
+     if(path.isEmpty()) return;
+     printer.setOutputFileName(path);
+     QTextDocument doc;
+     doc.setHtml(str);
+     doc.print(&printer);
 }
+
+void MainWindow::on_pushButton_mod_clicked()
+{
+       int id = ui->lineEdit_modid_2->text().toInt();
+       QString email=ui->lineedit_modemail->text();
+       QString nom= ui->lineEdit_modnom->text();
+       QString prenom= ui->lineEdit_modprenom->text();
+       int tel= ui->lineEdit_modtel->text().toInt();
+
+
+       fournisseur f;
+       bool test=f.modifier( id, tel, email, nom, prenom);
+       foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
+          le->clear();
+       }
+       if(test)
+       {
+           ui->tabfournisseur->setModel(f.afficher());
+
+           QMessageBox::information(nullptr, QObject::tr("Modification effectue"),
+                       QObject::tr("OK.\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
+
+       }
+       else
+           QMessageBox::critical(nullptr, QObject::tr("Modification non effectue"),
+                       QObject::tr("KO.\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_pushButton_supp_clicked()
+{
+    int id = ui->lineEdit_14->text().toInt();
+    bool test=f.supprimer(id);
+    if(test)
+    {             ui->tabfournisseur->setModel(f.afficher());     //refresh
+        QMessageBox::information(nullptr, QObject::tr("Supprimer un fournisseur"),
+                    QObject::tr("Fournisseur supprimé.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+    }
+    else
+        QMessageBox::critical(nullptr, QObject::tr("Supprimer un fournisseur"),
+                    QObject::tr("Erreur !.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+}
+void MainWindow::on_dateEdit_2_userDateChanged(const QDate )
+{
+   QDateTimeEdit *dateEdit = new QDateTimeEdit(QDate::currentDate());
+    dateEdit->setMinimumDate(QDate::currentDate().addDays(-365));
+    dateEdit->setMaximumDate(QDate::currentDate().addDays(365));
+    dateEdit->setDisplayFormat("yyyy.MM.dd");
+}
+void MainWindow::on_dateEdit_userDateChanged(const QDate )
+{
+    QDateTimeEdit *dateEdit = new QDateTimeEdit(QDate::currentDate());
+    dateEdit->setMinimumDate(QDate::currentDate().addDays(-365));
+    dateEdit->setMaximumDate(QDate::currentDate().addDays(365));
+    dateEdit->setDisplayFormat("yyyy.MM.dd");
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    ui->tabhis->setModel(tmph.afficherhis()) ;
+    ui->tabhis->setModel(tmph.afficherhis());//refresh
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    ui->tabequipement->setModel(e.afficher());
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    ui->tabequipement->setModel( e.afficher_tri());
+    ui->tabequipement->setModel( e.afficher_tri());
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    lng="ANG";
+                    // page biblo
+
+                    ui->pb_ajouter->setText("ADD");
+                    ui->pb_ajouter_2->setText("FIND");
+                    ui->pushButton10->setText("EDIT");
+                    ui->pb_supprimer_3->setText("REMOVE");
+                    ui->pushButton_2->setText("PRINT");
+                    ui->label_8->setText("enter the project ID");
+                    //----------------------------------//
+}
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    lng="FR";
+                    // page biblo
+
+                    ui->pb_ajouter->setText("AJOUTER");
+                    ui->pb_ajouter_2->setText("RECHERCHER");
+                    ui->pushButton10->setText("MODIFIER");
+                    ui->pb_supprimer_3->setText("SUPPRIMER");
+                    ui->pushButton_2->setText("IMPRIMER");
+                    ui->label_8->setText("entrer l'ID de l'equipement");
+}
+
+void MainWindow::on_pushButton_8_clicked()
+{
+    QTableView *table;
+                           table = ui->tabequipement;
+                           QString filters("CSV files (.csv);;All files (.*)");
+                           QString defaultFilter("CSV files (*.csv)");
+                           QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+                                              filters, &defaultFilter);
+                           QFile file(fileName);
+                           QAbstractItemModel *model =  table->model();
+                           if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+                               QTextStream data(&file);
+                               QStringList strList;
+                               for (int i = 0; i < model->columnCount(); i++) {
+                                   if (model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString().length() > 0)
+                                       strList.append("\"" + model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString() + "\"");
+                                   else
+                                       strList.append("");
+                               }
+                               data << strList.join(";") << "\n";
+                               for (int i = 0; i < model->rowCount(); i++) {
+                                   strList.clear();
+                                   for (int j = 0; j < model->columnCount(); j++) {
+                                       if (model->data(model->index(i, j)).toString().length() > 0)
+                                           strList.append("\"" + model->data(model->index(i, j)).toString() + "\"");
+                                       else
+                                           strList.append("");
+                                   }
+                                   data << strList.join(";") + "\n";
+                               }
+                               file.close();
+                               //QMessageBox::information(this,"Exporter To Excel","Exporter En Excel Avec Succées ");
+
+}}

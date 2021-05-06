@@ -3,37 +3,36 @@
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QVariant>
 class fournisseur
 {
     public:
     fournisseur();
-    fournisseur(int,int,QString,QString,QString,QString);
-    int getid();
-    int gettel();
+    fournisseur(int, int,QString,QString,QString);
+     int getid();
+     int gettel();
     QString getnom();
     QString getprenom();
-    QString getadresse();
     QString getemail();
 
-    void setid (int);
+    void setid ( int);
     void settel(int);
     void setnom(QString);
     void setprenom(QString);
-    void setadresse(QString);
     void setemail(QString);
 
 
     bool ajouter();
     QSqlQueryModel * afficher();
-    bool supprimer(int);
-    QSqlQueryModel * rechercher(int);
-    bool modifier(int,QString,int,int,int,QString,int);
+    bool supprimer( int);
+    QSqlQueryModel * rechercher( int);
+    bool modifier( int, int,QString,QString,QString);
     ~fournisseur(){};
 
 
 private:
-    int id,tel;
-    QString nom,prenom,adresse,email;
+     int id,tel;
+    QString nom,prenom,email;
 };
 
 #endif // FOURNISSEUR_H

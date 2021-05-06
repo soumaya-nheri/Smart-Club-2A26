@@ -1,4 +1,4 @@
-QT       += core gui sql printsupport
+QT       += core gui sql printsupport multimedia network serialport quick
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,13 +20,15 @@ SOURCES += \
     equipement.cpp \
     fournisseur.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    smtp.cpp
 
 HEADERS += \
     connection.h \
     equipement.h \
     fournisseur.h \
-    mainwindow.h
+    mainwindow.h \
+    smtp.h
 
 FORMS += \
     mainwindow.ui
